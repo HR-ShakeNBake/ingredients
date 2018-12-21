@@ -56,7 +56,7 @@ CREATE TABLE recipes_ingredients (
   FOREIGN KEY (ingredient_id) references ingredient_legend(id)
 );
 
-CREATE TABLE ingredients_stores (
+CREATE TABLE ingredients_products (
   ingredient_id int,
   product_id int,
   FOREIGN KEY (ingredient_id) references ingredient_legend(id),

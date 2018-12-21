@@ -25,7 +25,7 @@ var recipeDescriptionCreator = function() {
 }
 
 var recipeOwnerCreator = function() {
-  return faker.lorem.sentence();
+  return faker.lorem.word();
 }
 
 
@@ -112,7 +112,7 @@ var productNameCreator = function() {
 }
 
 
-for (var i = 1; i < 51; i++) {
+for (var i = 1; i < 501; i++) {
   product_legend_array.push([i, productPhotoUrlCreator(), productNameCreator()])
 }
 
@@ -121,11 +121,11 @@ for (var i = 1; i < 51; i++) {
 var nutrition_legend_array = [];
 
 var nutrition_calorie_creator = function() {
-  return faker.random.number() * 5;
+  return Math.ceil(Math.random() * 200);
 }
 
 var nutrition_serving_total_creator = function() {
-  return faker.random.number();
+  return Math.ceil(Math.random() * 4);
 }
 
 for (var i = 1; i < 101; i++) {
@@ -136,11 +136,11 @@ for (var i = 1; i < 101; i++) {
 var instruction_legend_array = [];
 
 var instruction_prep_time_creator = function() {
-  return faker.random.number();
+  return Math.ceil(Math.random() * 50);
 }
 
 var instruction_cook_time_creator = function() {
-  return faker.random.number();
+  return Math.ceil(Math.random() * 50);
 }
 
 for (var i = 1; i < 101; i++) {
@@ -158,30 +158,31 @@ var recipes_ingredients_join = [];
 //100 recipes that have, on average, 5 ingredients
 recipe_legend_array.forEach(item => {
   var ingredientsLength = Math.floor(Math.random()* 10);
-  var ingredientsQty = Math.floor(Math.random() * 5);
-  var randomIngredientId = () => Math.floor(Math.random()*100)
+  var ingredientsQty = Math.ceil(Math.random() * 5);
+  var randomIngredientId = () => Math.ceil(Math.random()*100)
   for (var i = 0; i <= ingredientsLength; i++) {
+    //console.log(item[0])
     recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
   }
 })
 
-
 //INGREDIENTS_PRODUCTS_JOIN
-var ingredients_stores_join = [];
+var ingredients_products_join = [];
 
 //The first 100 ingredients each have 5 products
 var productCounter = 1;
 for (var i = 1; i < 101; i++) {
   for (var j = 1; j < 6; j++) {
-    ingredients_stores_join.push([i, productCounter])
+    ingredients_products_join.push([i, productCounter])
     productCounter++;
   }
 }
+console.log(ingredients_products_join.length)
 
 
 //PRODUCTS_STORES_JOIN
 var productDealCreator = function() {
-  return `$${faker.commerce.price()} for ${Math.ceil(Math.random() * 3)} item - expires in 1 week`
+  return `$${faker.commerce.price()/10} for ${Math.ceil(Math.random() * 3)} item - expires in 1 week`
 }
 
 var products_stores_join = [];
@@ -195,7 +196,7 @@ for (var i = 1; i < 21; i++) {
   }
 }
 
-//console.log(recipe_legend_array);
+console.log(products_stores_join);
 
 
 
@@ -224,15 +225,15 @@ for (var i = 1; i < 21; i++) {
 
 
 ///////////INSERT INTO EACH TABLE
+connection.query('DELETE FROM recipes_ingredients');
+connection.query('DELETE FROM ingredients_products');
+connection.query('DELETE FROM products_stores');
 connection.query('DELETE FROM recipe_legend');
 connection.query('DELETE FROM nutrition_legend');
 connection.query('DELETE FROM instruction_legend');
 connection.query('DELETE FROM store_legend');
 connection.query('DELETE FROM ingredient_legend');
 connection.query('DELETE FROM product_legend');
-// connection.query('DELETE FROM recipes_ingredients');
-// connection.query('DELETE FROM ingredients_stores');
-// connection.query('DELETE FROM products_stores');
 
 
 //RECIPE_LEGEND TABLE
@@ -270,24 +271,46 @@ insertIntoIngredientLegendTable( function() {});
 
 //PRODUCT_LEGEND TABLE
 
-console.log(product_legend_array);
 var insertIntoProductLegendTable = function(cb) {
  var sql = "INSERT INTO product_legend (id, photo_url, name) VALUES ?";
   connection.query(sql, [product_legend_array], cb);
 }
 
-insertIntoProductLegendTable( function(results) {console.log(results)});
+insertIntoProductLegendTable( function() {console.log()});
 
 
 //STORE_LEGEND TABLE
 var insertIntoStoreLegendTable = function(cb) {
- var sql = "INSERT INTO ingredient_legend (id, photo_url, name, address, city_state_zip) VALUES ?";
+ var sql = "INSERT INTO store_legend (id, photo_url, name, address, city_state_zip) VALUES ?";
   connection.query(sql, [store_legend_array], cb);
 }
 
-insertIntoIngredientLegendTable( function(results) {console.log(results)});
+insertIntoStoreLegendTable( function() {console.log()});
+
+//RECIPES_INGREDIENTS_JOIN TABLE
+var insertIntoRecipesIngredientsTable = function(cb) {
+ var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, ingredient_id) VALUES ?";
+  connection.query(sql, [recipes_ingredients_join], cb);
+}
+
+insertIntoRecipesIngredientsTable( function() {console.log()});
 
 
+//INGREDIENTS_PRODUCTS_JOIN TABLE
+var insertIntoIngredientsProductsTable = function(cb) {
+ var sql = "INSERT INTO ingredients_products (ingredient_id, product_id) VALUES ?";
+  connection.query(sql, [ingredients_products_join], cb);
+}
+
+insertIntoIngredientsProductsTable( function() {console.log()});
+
+//PRODUCTS_STORES_JOIN TABLE
+var insertIntoProductsStoresTable = function(cb) {
+ var sql = "INSERT INTO products_stores (store_id, product_id, deal) VALUES ?";
+  connection.query(sql, [products_stores_join], cb);
+}
+
+insertIntoProductsStoresTable( function(results) {console.log(results)});
 
 
 // const updatePhrase = function(id, newStatus, cb) {
