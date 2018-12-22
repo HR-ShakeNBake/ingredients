@@ -3,6 +3,7 @@ const express = require('express');
 let app = express();
 let port = 5000;
 let Promise = require('bluebird');
+app.use(express.static(__dirname + './../public/'));
 
 
 //INITIALIZE DATABASE
@@ -20,13 +21,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //ROUTES
 app.get('/recipes', function(req, res) {
 	db.pullFirst(1, (err, result) => {
-		res.status(201).send(result)
+		res.status(201).end()
 	}) 
 })
 
 app.get('/recipes/:recipeId', function (req, res) {
 	db.pullFirst(req.params.recipeId, (err, result) => {
-		res.send(result)
+		res.end()
 	}) 
 });
 
@@ -34,4 +35,4 @@ app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
 
-module.exports = app;
+//module.exports = app;
