@@ -71,7 +71,7 @@ for (var i = 1; i < 501; i++) {
   ingredient_legend_array.push([i, ingredientMetricCreator(), ingredientNameCreator(), ingredientCategoryCreator()])
 }
 
-//STORE LEGEND DATA GENERATOR
+//STORE LEGEND
 var store_legend_array = [];
 
 var storeImageUlrCreator = function() {
@@ -111,7 +111,7 @@ for (var i = 1; i < 501; i++) {
   product_legend_array.push([i, productPhotoUrlCreator(), productNameCreator()])
 }
 
-//NUTRITION LEGEND DATA GENERATOR
+//NUTRITION LEGEND
 var nutrition_legend_array = [];
 
 var nutrition_calorie_creator = function() {
@@ -142,20 +142,20 @@ for (var i = 1; i < 101; i++) {
 }
 
 
-//RECIPES-INGREDIENTS JOIN TABLE DATA GENERATOR
+//RECIPES-INGREDIENTS JOIN TABLE
 var recipes_ingredients_join = [];
 
-//100 recipes that have, on average, 5 ingredients
+//100 recipes that have, on average, 10 ingredients
 recipe_legend_array.forEach(item => {
   var ingredientsLength = Math.floor(Math.random()* 10);
-  var ingredientsQty = Math.ceil(Math.random() * 5);
+  var ingredientsQty = Math.ceil(Math.random() * 10);
   var randomIngredientId = () => Math.ceil(Math.random()*100)
   for (var i = 0; i <= ingredientsLength; i++) {
     recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
   }
 })
 
-//INGREDIENTS-PRODUCTS JOIN TABLE DATA GENERATOR
+//INGREDIENTS-PRODUCTS JOIN TABLE
 var ingredients_products_join = [];
 
 //Planned assumption: the first 100 ingredients each have 5 products
@@ -168,7 +168,7 @@ for (var i = 1; i < 101; i++) {
 }
 
 
-//PRODUCTS-STORES JOIN TABLE DATA GENERATOR
+//PRODUCTS-STORES JOIN TABLE
 var productDealCreator = function() {
   return `$${faker.commerce.price()} for ${Math.ceil(Math.random() * 3)} item - expires in 1 week`
 }
@@ -198,110 +198,3 @@ module.exports = {
   products_stores_join
 }
 
-
-// ///////MYSQL PORTION - INPUTTING DATA
-// connection.query('DELETE FROM recipes_ingredients');
-// connection.query('DELETE FROM ingredients_products');
-// connection.query('DELETE FROM products_stores');
-// connection.query('DELETE FROM recipe_legend');
-// connection.query('DELETE FROM nutrition_legend');
-// connection.query('DELETE FROM instruction_legend');
-// connection.query('DELETE FROM store_legend');
-// connection.query('DELETE FROM ingredient_legend');
-// connection.query('DELETE FROM product_legend');
-
-
-// //RECIPE_LEGEND TABLE
-// var insertIntoRecipeLegendTable = function(cb) {
-//  var sql = "INSERT INTO recipe_legend (id, name, description, owner) VALUES ?";
-//   connection.query(sql, [recipe_legend_array], cb);
-// }
-
-// insertIntoRecipeLegendTable( function() {});
-
-// //NUTRITION_LEGEND TABLE
-// var insertIntoNutritionLegendTable = function(cb) {
-//  var sql = "INSERT INTO nutrition_legend (id, calories, serving_total) VALUES ?";
-//   connection.query(sql, [nutrition_legend_array], cb);
-// }
-
-// insertIntoNutritionLegendTable( function() {});
-
-
-// //INSTRUCTION_LEGEND TABLE
-// var insertIntoInstructionLegendTable = function(cb) {
-//  var sql = "INSERT INTO instruction_legend (id, prep_time, cook_time) VALUES ?";
-//   connection.query(sql, [instruction_legend_array], cb);
-// }
-
-// insertIntoInstructionLegendTable( function() {});
-
-// //INGREDIENT_LEGEND TABLE
-// var insertIntoIngredientLegendTable = function(cb) {
-//  var sql = "INSERT INTO ingredient_legend (id, metric, name, category) VALUES ?";
-//   connection.query(sql, [ingredient_legend_array], cb);
-// }
-
-// insertIntoIngredientLegendTable( function() {});
-
-// //PRODUCT_LEGEND TABLE
-
-// var insertIntoProductLegendTable = function(cb) {
-//  var sql = "INSERT INTO product_legend (id, photo_url, name) VALUES ?";
-//   connection.query(sql, [product_legend_array], cb);
-// }
-
-// insertIntoProductLegendTable( function() {console.log()});
-
-
-// //STORE_LEGEND TABLE
-// var insertIntoStoreLegendTable = function(cb) {
-//  var sql = "INSERT INTO store_legend (id, photo_url, name, address, city_state_zip) VALUES ?";
-//   connection.query(sql, [store_legend_array], cb);
-// }
-
-// insertIntoStoreLegendTable( function() {console.log()});
-
-// //RECIPES_INGREDIENTS_JOIN TABLE
-// var insertIntoRecipesIngredientsTable = function(cb) {
-//  var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, ingredient_id) VALUES ?";
-//   connection.query(sql, [recipes_ingredients_join], cb);
-// }
-
-// insertIntoRecipesIngredientsTable( function() {console.log()});
-
-
-// //INGREDIENTS_PRODUCTS_JOIN TABLE
-// var insertIntoIngredientsProductsTable = function(cb) {
-//  var sql = "INSERT INTO ingredients_products (ingredient_id, product_id) VALUES ?";
-//   connection.query(sql, [ingredients_products_join], cb);
-// }
-
-// insertIntoIngredientsProductsTable( function() {console.log()});
-
-// //PRODUCTS_STORES_JOIN TABLE
-// var insertIntoProductsStoresTable = function(cb) {
-//  var sql = "INSERT INTO products_stores (store_id, product_id, deal) VALUES ?";
-//   connection.query(sql, [products_stores_join], cb);
-// }
-
-// insertIntoProductsStoresTable( function() {console.log()});
-
-
-
-// //SELECT QUERY
-// var selectAllPropertiesForRecipe = function(id, cb) {
-//   var queryArgs = [id]
-//   var sql = `
-//     select r.name, ri.*, il.*, pl.*, sl.* from recipe_legend r
-//       inner join recipes_ingredients ri on ri.recipe_id = r.id
-//       inner join ingredient_legend il on il.id = ri.ingredient_id
-//       inner join ingredients_products ip on ip.ingredient_id = il.id
-//       left join product_legend pl on pl.id = ip.product_id
-//       left join products_stores ps on ps.product_id = pl.id
-//       left join store_legend sl on sl.id = ps.store_id
-//     where r.id = ?`
-//     connection.query(sql, queryArgs, cb)
-// }
-
-// selectAllPropertiesForRecipe(1, function(err, results) {console.log(results)})
