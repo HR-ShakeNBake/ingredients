@@ -2,117 +2,76 @@
 const mysql = require('mysql');
 const mysqlConfig = require('./config.js');
 const connection = mysql.createConnection(mysqlConfig);
-const fakeData = require('./fake_data_functions.js')
-
-//CLEAR TABLES
-connection.query('DELETE FROM recipes_ingredients');
-connection.query('DELETE FROM ingredients_products');
-connection.query('DELETE FROM products_stores');
-connection.query('DELETE FROM recipe_legend');
-connection.query('DELETE FROM nutrition_legend');
-connection.query('DELETE FROM instruction_legend');
-connection.query('DELETE FROM store_legend');
-connection.query('DELETE FROM ingredient_legend');
-connection.query('DELETE FROM product_legend');
+const seedDatabase = require('./fake_data_seed.js')
 
 
-//DEFINE SQL INSERT QUERIES
-
-//RECIPE_LEGEND TABLE
-var insertIntoRecipeLegendTable = function(cb) {
- var sql = "INSERT INTO recipe_legend (id, name, description, owner) VALUES ?";
-  connection.query(sql, [fakeData.recipe_legend_array], cb);
-}
-
-
-//NUTRITION_LEGEND TABLE
-var insertIntoNutritionLegendTable = function(cb) {
- var sql = "INSERT INTO nutrition_legend (id, calories, serving_total) VALUES ?";
-  connection.query(sql, [fakeData.nutrition_legend_array], cb);
-}
-
-
-//INSTRUCTION_LEGEND TABLE
-var insertIntoInstructionLegendTable = function(cb) {
- var sql = "INSERT INTO instruction_legend (id, prep_time, cook_time) VALUES ?";
-  connection.query(sql, [fakeData.instruction_legend_array], cb);
-}
-
-
-//INGREDIENT_LEGEND TABLE
-var insertIntoIngredientLegendTable = function(cb) {
- var sql = "INSERT INTO ingredient_legend (id, metric, name, category) VALUES ?";
-  connection.query(sql, [fakeData.ingredient_legend_array], cb);
-}
-
-
-//PRODUCT_LEGEND TABLE
-
-var insertIntoProductLegendTable = function(cb) {
- var sql = "INSERT INTO product_legend (id, photo_url, name) VALUES ?";
-  connection.query(sql, [fakeData.product_legend_array], cb);
-}
-
-
-//STORE_LEGEND TABLE
-var insertIntoStoreLegendTable = function(cb) {
- var sql = "INSERT INTO store_legend (id, photo_url, name, address, city_state_zip) VALUES ?";
-  connection.query(sql, [fakeData.store_legend_array], cb);
-}
-
-
-//RECIPES_INGREDIENTS_JOIN TABLE
-var insertIntoRecipesIngredientsTable = function(cb) {
- var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, ingredient_id) VALUES ?";
-  connection.query(sql, [fakeData.recipes_ingredients_join], cb);
-}
-
-
-//INGREDIENTS_PRODUCTS_JOIN TABLE
-var insertIntoIngredientsProductsTable = function(cb) {
- var sql = "INSERT INTO ingredients_products (ingredient_id, product_id) VALUES ?";
-  connection.query(sql, [fakeData.ingredients_products_join], cb);
-}
-
-
-//PRODUCTS_STORES_JOIN TABLE
-var insertIntoProductsStoresTable = function(cb) {
- var sql = "INSERT INTO products_stores (store_id, product_id, deal) VALUES ?";
-  connection.query(sql, [fakeData.products_stores_join], cb);
-}
-
-
-//INVOKE SQL INSERT QUERIES
-insertIntoRecipeLegendTable();
-insertIntoNutritionLegendTable();
-insertIntoInstructionLegendTable();
-insertIntoIngredientLegendTable();
-insertIntoProductLegendTable();
-insertIntoStoreLegendTable();
-insertIntoRecipesIngredientsTable();
-insertIntoIngredientsProductsTable();
-insertIntoProductsStoresTable();
+connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
+  console.log('connected as id ' + connection.threadId);
+});
 
 
 
 //SELECT QUERY
 var selectAllPropertiesForRecipe = function(id, cb) {
+  console.log(`about to query for id ${id}`)
   var queryArgs = [id]
   var sql = `
-    select r.name, ri.*, il.*, pl.*, sl.* from recipe_legend r
-      inner join recipes_ingredients ri on ri.recipe_id = r.id
-      inner join ingredient_legend il on il.id = ri.ingredient_id
-      inner join ingredients_products ip on ip.ingredient_id = il.id
-      left join product_legend pl on pl.id = ip.product_id
-      left join products_stores ps on ps.product_id = pl.id
-      left join store_legend sl on sl.id = ps.store_id
-    where r.id = ?`
+    SELECT 
+      r.name recipe_name,
+      r.description recipe_description,
+      r.owner recipe_owner,
+      ri.qty qty,
+      il.id ingredient_id,
+      il.metric ingredient_metric,
+      il.name ingredient_name,
+      il.category ingredient_category,
+      pl.id product_id,
+      pl.photo_url product_photo,
+      pl.name product_name,
+      sl.id store_id,
+      sl.photo_url store_photo,
+      sl.name store_name,
+      sl.address store_address,
+      sl.city_state_zip store_city_state_zip
+    FROM recipe_legend r
+    INNER JOIN recipes_ingredients ri ON ri.recipe_id = r.id
+    INNER JOIN ingredient_legend il ON il.id = ri.ingredient_id
+    INNER JOIN ingredients_products ip ON ip.ingredient_id = il.id
+    LEFT JOIN product_legend pl ON pl.id = ip.product_id
+    LEFT JOIN products_stores ps ON ps.product_id = pl.id
+    LEFT JOIN store_legend sl ON sl.id = ps.store_id
+    WHERE r.id = ?`
     connection.query(sql, queryArgs, cb)
 }
 
-//selectAllPropertiesForRecipe(1, function(err, results) {console.log(results)})
+var selectFirstRecordForRecipe = function(id, cb) {
+  var queryArgs = [id];
+  var sql = `
+    SELECT
+      r.name recipe_name,
+      r.description recipe_description,
+      r.owner recipe_owner,
+      ri.qty qty,
+      il.id ingredient_id,
+      il.metric ingredient_metric,
+      il.name ingredient_name,
+      il.category ingredient_category,
+      nl.calories,
+      nl.serving_total,
+      inl.prep_time,
+      inl.cook_time
+    FROM recipe_legend r
+    INNER JOIN recipes_ingredients ri ON ri.recipe_id = r.id
+    INNER JOIN ingredient_legend il ON il.id = ri.ingredient_id
+    INNER JOIN nutrition_legend nl on nl.id = r.id
+    INNER JOIN instruction_legend inl on inl.id = r.id
+    WHERE r.id = ?`
+  connection.query(sql, queryArgs, cb)
+}
 
-
-
-module.exports = {
-};
+module.exports.pull = selectAllPropertiesForRecipe;
+module.exports.pullFirst = selectFirstRecordForRecipe;
