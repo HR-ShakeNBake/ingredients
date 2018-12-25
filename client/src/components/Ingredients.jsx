@@ -81,7 +81,7 @@ class Ingredients extends React.Component {
         {this.state.recipe[0].recipe_name}
         </div>
         <div className="ingredientList">
-          <IngredientsList ingredients={this.state.recipe} />
+          <IngredientsList ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
         </div>
       </div>
     );

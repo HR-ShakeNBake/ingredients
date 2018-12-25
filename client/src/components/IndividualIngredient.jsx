@@ -22,7 +22,7 @@ class IndividualIngredient extends React.Component {
 	  onClick = {this.toggleClass.bind(this)}></i>
 	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
 
-    {ingredient.product_id ? <ProductSnippet ingredient={ingredient}/>: null}
+    {ingredient.product_id && this.props.locationChecked ? <ProductSnippet ingredient={ingredient}/>: null}
   	</li>
   	)}
 }
