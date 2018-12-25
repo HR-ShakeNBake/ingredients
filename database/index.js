@@ -114,8 +114,11 @@ var getProductInformation = function(id, cb) {
         inl.cook_time,
         sl.id store_id,
         pl.id product_id,
-        pl.photo_url,
-        pl.name product_name
+        pl.photo_url product_url,
+        pl.name product_name,
+        ps.deal product_deal,
+        ps.store_id ps_store_id,
+        ps.product_id ps_product_id
       FROM recipe_legend r
       INNER JOIN recipes_ingredients ri ON ri.recipe_id = r.id
       INNER JOIN ingredient_legend il ON il.id = ri.ingredient_id

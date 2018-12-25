@@ -14,11 +14,6 @@ ul {
   margin: 0;
 }
 
-.groceries {
-  margin: 10px;
-  list-style-type: none;
-}
-
 .list {
   -webkit-column-count: 2; /* Chrome, Safari, Opera */
   -moz-column-count: 2; /* Firefox */
@@ -71,5 +66,8 @@ ul {
   cursor: pointer;
   height: 54px;
   width: 100%;
+}
 
+.productSnippet {
+  width: 100px;
 }

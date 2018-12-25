@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductSnippet from './ProductSnippet.jsx'
 
 class IndividualIngredient extends React.Component {
   constructor(props) {
@@ -14,11 +15,13 @@ class IndividualIngredient extends React.Component {
   };
 
   render() {
+    let ingredient = this.props.ingredient
   	return (
 	<li>
 	<i className = {this.state.addedToCart ? "fas fa-plus-circle" : "fas fa-check-circle"}
 	  onClick = {this.toggleClass.bind(this)}></i>
-	  <span>{this.props.ingredient.qty} {this.props.ingredient.ingredient_metric} {this.props.ingredient.ingredient_name} </span>
+	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+    {ingredient.product_id ? <ProductSnippet ingredient={ingredient}/> : null}
   	</li>
   	)}
 }
