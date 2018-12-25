@@ -3,12 +3,6 @@ body {
   color: seagreen;
 }
 
-#main {
-  width: 50%;
-  margin: auto;
-  text-align: center;
-}
-
 ul {
   padding-left: 0px;
   margin: 0;
@@ -28,7 +22,7 @@ ul {
 }
 
 .container {
-  width: 700px;
+  width: 900px;
 }
 
 .gear {

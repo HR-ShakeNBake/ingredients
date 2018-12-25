@@ -69,7 +69,8 @@ var selectFirstRecordForRecipe = function(id, cb) {
     INNER JOIN ingredient_legend il ON il.id = ri.ingredient_id
     INNER JOIN nutrition_legend nl on nl.id = r.id
     INNER JOIN instruction_legend inl on inl.id = r.id
-    WHERE r.id = ?`
+    WHERE r.id = ?
+    ORDER BY il.id ASC`
   connection.query(sql, queryArgs, cb)
 }
 
