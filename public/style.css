@@ -8,6 +8,10 @@ ul {
   margin: 0;
 }
 
+li {
+  break-inside: avoid-column;
+}
+
 .list {
   -webkit-column-count: 2; /* Chrome, Safari, Opera */
   -moz-column-count: 2; /* Firefox */
