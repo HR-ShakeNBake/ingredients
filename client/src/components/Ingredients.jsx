@@ -13,7 +13,8 @@ class Ingredients extends React.Component {
       recipe: [{recipe_name: 'food'}],
       storeIds: [],
       currentStoreIndex: 0,
-      currentStoreInfo: [{storeinfo: 'yo'}]
+      currentStoreInfo: [{storeinfo: 'yo'}],
+      locationChecked: false
     };
   }
 
@@ -61,12 +62,20 @@ class Ingredients extends React.Component {
     return results;
   }
 
+  toggleLocation(checked) {
+    this.setState({ locationChecked: checked });
+  }
+
   render() {
     return (
       <div className="container">
         <div className="nav">
           <Summary />
-          <OnSale currentStoreInfo={this.state.currentStoreInfo} getStoreInfo={this.getStoreInfo.bind(this)} />
+          <OnSale 
+            currentStoreInfo={this.state.currentStoreInfo} 
+            getStoreInfo={this.getStoreInfo.bind(this)} 
+            toggleLocation={this.toggleLocation.bind(this)} 
+            locationChecked={this.state.locationChecked} />
         </div>
         <div className="recipeTitle">
         {this.state.recipe[0].recipe_name}
