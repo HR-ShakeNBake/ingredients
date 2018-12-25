@@ -17,11 +17,11 @@ class ProductSnippet extends React.Component {
     let ingredient = this.props.ingredient
   	return (
 	<div className="productSnippet">
-    {ingredient.product_url} {ingredient.product_name} {ingredient.product_deal}
-  <img 
+  <img className="productPhoto"
       src={ingredient.product_url}
       alt="new"
       />
+    {ingredient.product_name} {ingredient.product_deal}
       </div>
   	)}
 }

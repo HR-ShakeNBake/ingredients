@@ -68,10 +68,10 @@ class Ingredients extends React.Component {
           <Summary />
           <OnSale currentStoreInfo={this.state.currentStoreInfo} getStoreInfo={this.getStoreInfo.bind(this)} />
         </div>
-        <div className="main">
+        <div className="recipeTitle">
         {this.state.recipe[0].recipe_name}
         </div>
-        <div>
+        <div className="ingredientList">
           <IngredientsList ingredients={this.state.recipe} />
         </div>
       </div>

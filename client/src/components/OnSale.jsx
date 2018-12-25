@@ -20,7 +20,7 @@ class OnSale extends Component {
  
   render() {
     return (
-      <div>
+      <div className="onSaleSection">
       <label htmlFor="normal-switch">
         <span>Switch with default style</span>
         <Switch
@@ -66,8 +66,9 @@ class OnSale extends Component {
         />
       </label>
       <button className="gear" style={this.state.locationForm ? {backgroundColor: "#ffa500" } : {backgroundColor: "#b2b2b2"}}><i className="fas fa-cog"></i></button>
-      {this.state.checked ? <Form getStoreInfo={this.props.getStoreInfo} /> : null}
-      <StoreDetails currentStoreInfo={this.props.currentStoreInfo} />
+      {this.state.checked 
+        ? <div><Form getStoreInfo={this.props.getStoreInfo} /> <StoreDetails currentStoreInfo={this.props.currentStoreInfo} /> </div> 
+        : null}
       </div>
     );
   }

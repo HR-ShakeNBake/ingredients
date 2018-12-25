@@ -22,7 +22,11 @@ ul {
 }
 
 .container {
-  width: 900px;
+  width: 1050px;
+}
+
+.ingredientList {
+  width:70%;
 }
 
 .gear {
@@ -63,5 +67,16 @@ ul {
 }
 
 .productSnippet {
-  width: 100px;
+  width: 300px;
+  height: 150px;
+}
+
+.productPhoto {
+  width: 70px;
+  height: 80px;
+  float: right;
+}
+
+.onSaleSection {
+  width: 300px;
 }

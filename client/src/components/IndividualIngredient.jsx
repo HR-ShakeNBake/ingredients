@@ -17,11 +17,12 @@ class IndividualIngredient extends React.Component {
   render() {
     let ingredient = this.props.ingredient
   	return (
-	<li>
+	<li className="productItem">
 	<i className = {this.state.addedToCart ? "fas fa-plus-circle" : "fas fa-check-circle"}
 	  onClick = {this.toggleClass.bind(this)}></i>
 	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
-    {ingredient.product_id ? <ProductSnippet ingredient={ingredient}/> : null}
+
+    {ingredient.product_id ? <ProductSnippet ingredient={ingredient}/>: null}
   	</li>
   	)}
 }
