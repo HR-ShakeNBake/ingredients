@@ -18,9 +18,9 @@ class IndividualIngredient extends React.Component {
     let ingredient = this.props.ingredient
   	return (
 	<li className="productItem">
-	<i className = {this.state.addedToCart ? "fas fa-plus-circle" : "fas fa-check-circle"}
+	<div className="ingredientWithoutProduct"><i className = {this.state.addedToCart ? "fas fa-plus-circle fa-2x" : "fas fa-check-circle fa-2x"}
 	  onClick = {this.toggleClass.bind(this)}></i>
-	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span></div>
 
     {ingredient.product_id && this.props.locationChecked ? <ProductSnippet ingredient={ingredient}/>: null}
   	</li>
