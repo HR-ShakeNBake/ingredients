@@ -68,21 +68,22 @@ class Ingredients extends React.Component {
 
   render() {
     return (
+      <div className="outerContainer">
+      <div className="title">Ingredients
+        <Summary />
+      </div>
       <div className="container">
         <div className="nav">
-          <Summary />
           <OnSale 
             currentStoreInfo={this.state.currentStoreInfo} 
             getStoreInfo={this.getStoreInfo.bind(this)} 
             toggleLocation={this.toggleLocation.bind(this)} 
             locationChecked={this.state.locationChecked} />
         </div>
-        <div className="recipeTitle">
-        {this.state.recipe[0].recipe_name}
-        </div>
         <div className="ingredientList">
           <IngredientsList ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
         </div>
+      </div>
       </div>
     );
   }
