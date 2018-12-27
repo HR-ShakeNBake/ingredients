@@ -1,24 +1,26 @@
 import React from 'react';
 import ProductSnippet from './ProductSnippet.jsx'
+import {toggleAddedToCart} from './StateFunctions.js'
 
 class IndividualIngredient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addedToCart: true
+      addedToCart: false
     };
   }
 
-  toggleClass() {
-    const currentState = this.state.addedToCart;
-    this.setState({ addedToCart: !currentState });
+  toggleClass(state) {
+   // const currentState = this.state.addedToCart;
+    this.setState(toggleAddedToCart(this.state))
+   // this.setState({ addedToCart: !currentState });
   };
 
   render() {
-    let ingredient = this.props.ingredient
+    let ingredient = this.props.ingredient;
   	return (
 	<li className="productItem">
-	<div className="ingredientWithoutProduct"><i className = {this.state.addedToCart ? "fas fa-plus-circle fa-2x" : "fas fa-check-circle fa-2x"}
+	<div className="ingredientWithoutProduct"><i className = {this.state.addedToCart ?  "fas fa-check-circle fa-2x" : "fas fa-plus-circle fa-2x"}
 	  onClick = {this.toggleClass.bind(this)}></i>
 	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span></div>
 
