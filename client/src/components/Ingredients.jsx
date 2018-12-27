@@ -54,8 +54,9 @@ class Ingredients extends React.Component {
     } else {
       var newStoreIndex = 0;
     } 
-      this.setState({currentStoreIndex: newStoreIndex});
-      this.getStoreInfo();
+      this.setState({currentStoreIndex: newStoreIndex}, () => {
+        this.getStoreInfo();
+      });
   }
 
   reduceIngredientsArray(ingredientsArray) {

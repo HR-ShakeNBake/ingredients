@@ -149,9 +149,13 @@ var recipes_ingredients_join = [];
 recipe_legend_array.forEach(item => {
   var ingredientsLength = 5 + Math.floor(Math.random()* 10);
   var randomIngredientId = () => Math.ceil(Math.random()*100)
+  var randomIngredientList = [];
   for (var i = 0; i <= ingredientsLength; i++) {
-    var ingredientsQty = Math.ceil(Math.random() * 10);
-    recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
+    var randomIngredient = randomIngredientId();
+    if (!randomIngredientList.includes(randomIngredient)) {
+      var ingredientsQty = Math.ceil(Math.random() * 10);
+      recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
+    }
   }
 })
 
