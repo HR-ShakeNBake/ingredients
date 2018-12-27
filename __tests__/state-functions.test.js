@@ -1,6 +1,6 @@
 import { toggleAddedToCart } from '../client/src/components/StateFunctions.js';
 
-test("toggleAddedToCart toggles an item's state boolean value" () => {
+test("toggleAddedToCart toggles an item's state boolean value", () => {
   const startState = {
     addedToCart: false
   };
