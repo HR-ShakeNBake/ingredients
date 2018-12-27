@@ -91,13 +91,41 @@ li {
 
 .productSnippet {
   width: 300px;
-  height: 150px;
+  height: 100px;
   font-size: 0.78rem;
   font-weight: bold;
 }
 
+.storePhoto {
+  width: 70px;
+  height: 80px;
+  float: left;
+  margin-right: 10px; 
+}
+
+.storeSnippet {
+  margin-top: 15px;
+  color: #808080;
+  font-size: .75rem;
+}
+
+.storeTitle {
+  font-size: .875rem;
+}
+
 .productDeal {
   color: #FFA500;
+}
+
+.onSaleTitle {
+  font-size: 1.5625rem;
+  color: #2d2d2d;
+  margin-right: 30px;
+}
+
+.onSaleExplanation {
+  font-size: .75rem;
+  color: #808080;
 }
 
 .productPhoto {
@@ -124,4 +152,12 @@ li {
   color: #FFA500;
   vertical-align: middle;
   margin-right: 12px;
+}
+
+.fa-chevron-circle-right {
+  vertical-align: middle;
+}
+
+.chevronArrow {
+  float: right;
 }

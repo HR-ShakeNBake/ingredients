@@ -26,7 +26,7 @@ class ProductSnippet extends React.Component {
     <div className="productDeal">{ingredient.product_deal}</div> 
       </div>
     } else {
-      product =  null
+      product = null
     }
   	return (product)}
 }

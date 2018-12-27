@@ -14,7 +14,6 @@ class Form extends React.Component {
   }
 
   handleSubmit(event) {
-  //  alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
     this.props.getStoreInfo()
   }
@@ -22,10 +21,10 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-      <button className="findMeButton">Find Me</button>
-      <div>or</div>
+      <button className="findMeButton" onClick={this.handleSubmit}>Find Me</button>
+      <div style={{textAlign: "center"}}>or</div>
       <form onSubmit={this.handleSubmit}>
-        <input type="text" style={{height: "48px", width: "200px", margin: "0px 0px"}} value={this.state.value} onChange={this.handleChange} />
+        <input type="text" style={{fontSize: "18px", fontFamily: "Source Sans Pro", height: "48px", width: "200px", margin: "0px 0px"}} placeholder="Enter Zip Code" value={this.state.value} onChange={this.handleChange} />
         <input type="submit" value="OK" className="locationSubmitButton" />
       </form>
       </div>

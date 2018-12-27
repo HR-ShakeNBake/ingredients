@@ -48,6 +48,14 @@ class Ingredients extends React.Component {
       .then(recipe => this.setState({recipe}))
   }
 
+  scrollToNextStore() {
+    if (this.state.currentStoreIndex < this.state.storeIds.length) {
+      let newStoreIndex = this.state.currentStoreIndex + 1;
+      this.setState({currentStoreIndex: newStoreIndex});
+      this.getStoreInfo();
+    }
+  }
+
   reduceIngredientsArray(ingredientsArray) {
     var ingredientIds = [];
     var results = [];
@@ -78,7 +86,8 @@ class Ingredients extends React.Component {
             currentStoreInfo={this.state.currentStoreInfo} 
             getStoreInfo={this.getStoreInfo.bind(this)} 
             toggleLocation={this.toggleLocation.bind(this)} 
-            locationChecked={this.state.locationChecked} />
+            locationChecked={this.state.locationChecked}
+            scrollToNextStore={this.scrollToNextStore.bind(this)} />
         </div>
         <div className="ingredientList">
           <IngredientsList ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
