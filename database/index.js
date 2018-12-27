@@ -98,7 +98,7 @@ var getStoreInformation = function(id, cb) {
 }
 
 var getProductInformation = function(id, cb) {
-  var queryArgs = [1]
+  var queryArgs = [id]
   var sql = `
     SELECT 
         r.name recipe_name,

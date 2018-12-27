@@ -42,18 +42,20 @@ class Ingredients extends React.Component {
     fetch(`http://localhost:5000/stores/${currentStoreId}`)
       .then(res => res.json())
       .then(storeInfo => this.setState({ currentStoreInfo: storeInfo }))
-      .then(() => fetch(`http://localhost:5000/products/1`))
+      .then(() => fetch(`http://localhost:5000/products/${currentStoreId}`))
       .then(res => res.json())
       .then(ingredientsArray => this.reduceIngredientsArray(ingredientsArray))
       .then(recipe => this.setState({recipe}))
   }
 
   scrollToNextStore() {
-    if (this.state.currentStoreIndex < this.state.storeIds.length) {
-      let newStoreIndex = this.state.currentStoreIndex + 1;
+    if (this.state.currentStoreIndex < this.state.storeIds.length - 1) {
+      var newStoreIndex = this.state.currentStoreIndex + 1
+    } else {
+      var newStoreIndex = 0;
+    } 
       this.setState({currentStoreIndex: newStoreIndex});
       this.getStoreInfo();
-    }
   }
 
   reduceIngredientsArray(ingredientsArray) {
