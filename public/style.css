@@ -92,6 +92,12 @@ li {
 .productSnippet {
   width: 300px;
   height: 150px;
+  font-size: 0.78rem;
+  font-weight: bold;
+}
+
+.productDeal {
+  color: #FFA500;
 }
 
 .productPhoto {

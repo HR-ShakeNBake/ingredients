@@ -22,12 +22,11 @@ class ProductSnippet extends React.Component {
       src={ingredient.product_url}
       alt="new"
       />
-    {ingredient.product_name} {ingredient.product_deal}
+    <div>{ingredient.product_name}</div>
+    <div className="productDeal">{ingredient.product_deal}</div> 
       </div>
     } else {
-      product =   <div className="productSnippet">
-    {ingredient.product_name} {ingredient.product_deal}
-      </div>
+      product =  null
     }
   	return (product)}
 }

@@ -11,9 +11,7 @@ class IndividualIngredient extends React.Component {
   }
 
   toggleClass(state) {
-   // const currentState = this.state.addedToCart;
     this.setState(toggleAddedToCart(this.state))
-   // this.setState({ addedToCart: !currentState });
   };
 
   render() {
