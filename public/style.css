@@ -41,6 +41,7 @@ li {
   list-style-type: none;
   font-size: .888889rem;
   margin-left: 10px;
+  width: 625px;
 }
 
 .nav {
@@ -94,12 +95,14 @@ li {
 }
 
 .productSnippet {
-  width: 300px;
+  width: 210px;
   height: 100px;
   font-size: 0.78rem;
   font-weight: bold;
   margin-left: 55px;
+  margin-top: 15px;
 }
+
 
 .storePhoto {
   width: 70px;
@@ -119,7 +122,9 @@ li {
 }
 
 .productDeal {
-  color: #FFA500;
+  color: #ff7e1a;
+  font-size: .72rem;
+  line-height: 1.1rem;
 }
 
 .onSaleTitle {
@@ -134,9 +139,10 @@ li {
 }
 
 .productPhoto {
-  width: 50px;
+  width: 60px;
   height: 60px;
   float: right;
+  margin-left: 20px;
 }
 
 .onSaleSection {
@@ -148,7 +154,7 @@ li {
 }
 
 .ingredientWithProduct {
-  height: 265px;
+  height: 165px;
 }
 
 .plusIcon {
