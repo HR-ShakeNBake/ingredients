@@ -14,11 +14,13 @@ li {
 
 .title {
   color: #4d4d4d;
+  font-weight: 100;
   font-size: 28px;
-  font-weight: lighter;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 20px;
   padding-bottom: 10px;
+  margin-left: 5px;
+  padding-left: 10px;
 }
 
 .summary {
@@ -27,6 +29,7 @@ li {
 
 .outerContainer {
   width: 1050px;
+  margin-left: 15px;
 }
 
 .list {
@@ -37,6 +40,7 @@ li {
   color: #2d2d2d;
   list-style-type: none;
   font-size: .888889rem;
+  margin-left: 10px;
 }
 
 .nav {
@@ -94,6 +98,7 @@ li {
   height: 100px;
   font-size: 0.78rem;
   font-weight: bold;
+  margin-left: 55px;
 }
 
 .storePhoto {
@@ -129,8 +134,8 @@ li {
 }
 
 .productPhoto {
-  width: 70px;
-  height: 80px;
+  width: 50px;
+  height: 60px;
   float: right;
 }
 
@@ -142,8 +147,11 @@ li {
   height: 65px;
 }
 
-.fa-plus-circle {
-  color: #b2b2b2;
+.ingredientWithProduct {
+  height: 265px;
+}
+
+.plusIcon {
   vertical-align: middle;
   margin-right: 12px;
 }
@@ -161,4 +169,9 @@ li {
 .chevronArrow {
   float: right;
   cursor: pointer;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

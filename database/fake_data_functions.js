@@ -119,7 +119,7 @@ var nutrition_calorie_creator = function() {
 }
 
 var nutrition_serving_total_creator = function() {
-  return Math.ceil(Math.random() * 4);
+  return 3 + Math.ceil(Math.random() * 4);
 }
 
 for (var i = 1; i < 101; i++) {

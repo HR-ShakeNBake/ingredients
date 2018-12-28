@@ -18,13 +18,27 @@ class IndividualIngredient extends React.Component {
     let ingredient = this.props.ingredient;
   	return (
 	<li className="productItem">
-	<div className="ingredientWithoutProduct"><i className = {this.state.addedToCart ?  "fas fa-check-circle fa-2x" : "fas fa-plus-circle fa-2x"}
-	  onClick = {this.toggleClass.bind(this)}></i>
-	  <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span></div>
-
-    {ingredient.product_id && this.props.locationChecked ? <ProductSnippet ingredient={ingredient}/>: null}
-  	</li>
-  	)}
+    {(!this.props.locationChecked || (this.props.locationChecked && ingredient.ps_product_id &&ingredient.ps_product_id === null)) 
+      ?  <div className="ingredientWithoutProduct">
+          {this.state.addedToCart 
+            ? <img src="checkmark.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+            : <img src="plus_icon.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+          }
+	      <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+        </div>
+      : <div className="ingredientWithProduct">
+          {this.state.addedToCart 
+            ? <img src="checkmark.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+            : <img src="plus_icon.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+          }
+          <span>{ingredient.qty} {ingredient.product_id} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+          <ProductSnippet ingredient={ingredient}/>
+        </div>
+    }
+  </li>
+    )}
 }
+
+
 
 export default IndividualIngredient;
