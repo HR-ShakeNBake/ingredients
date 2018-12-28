@@ -24,12 +24,13 @@ class OnSale extends Component {
       <div className="onSaleSection">
       <label htmlFor="normal-switch">
         <span className="onSaleTitle">On Sale</span>
-        <Switch
+        <span className="switch"><Switch
           onChange={this.props.toggleLocation}
           checked={this.props.locationChecked}
           id="normal-switch"
-          handleDiameter={18}
-          width={70}
+          handleDiameter={20}
+          width={72}
+          height={34}
           uncheckedIcon={
             <div
               style={{
@@ -39,7 +40,7 @@ class OnSale extends Component {
                 height: "100%",
                 fontSize: 15,
                 color: '#b2b2b2',
-                paddingRight: 2
+                paddingRight: 0
               }}
             >
               Off
@@ -47,8 +48,8 @@ class OnSale extends Component {
           }
           offColor="#fcfcfc"
           offHandleColor="#b2b2b2"
-          onColor="#FFA500"
-          borderColor="#cfcfcf"
+          onColor="#ff7e1a"
+          border="#cfcfcf"
           checkedIcon={
             <div
               style={{
@@ -58,18 +59,18 @@ class OnSale extends Component {
                 height: "100%",
                 fontSize: 15,
                 color: "white",
-                paddingRight: 2
+                paddingRight: 0
               }}
             >
               On
             </div>
           }          
-        />
+        /></span>
       </label>
       {this.props.locationChecked
         ? <span>{this.state.gear 
-            ? <img src="on_gear.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleGear.bind(this)} />
-            : <img src="off_gear.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleGear.bind(this)} />
+            ? <img src="on_gear.png" className="gear" style={{height: "38px", width: "38px"}} onClick = {this.toggleGear.bind(this)} />
+            : <img src="off_gear.png" className="gear" style={{height: "38px", width: "38px"}} onClick = {this.toggleGear.bind(this)} />
           }</span>
         : null
       }
