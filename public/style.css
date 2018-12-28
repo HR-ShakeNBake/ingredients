@@ -61,6 +61,7 @@ li {
 
 .storeContainer {
   height: 200px;
+  padding-left: 2px;
 }
 
 .gear {
@@ -70,12 +71,14 @@ li {
 .locationSubmitButton {
   background-color: #b2b2b2;
   color: white;
-  padding: 15px 32px;
+  text-align: center;
   display: inline-block;
-  font-size: 16px;
-  margin: 0px 0px;
+  font-size: 17px;
+  font-weight: bold;
   cursor: pointer;
-  height: 54px;
+  height: 74px;
+  width: 74px;
+  padding-top: 4px;
 }
 
 .switch {
@@ -86,15 +89,17 @@ li {
 }
 
 .findMeButton {
-  background-color: #b2b2b2;
+  background-color: #b3b3b3;
   color: white;
   padding: 15px 32px;
   display: inline-block;
-  font-size: 16px;
-  margin: 0px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 7px;
   cursor: pointer;
-  height: 54px;
-  width: 100%;
+  height: 60px;
+  width: 290px;
+  margin-bottom: 3px;
 }
 
 .productSnippet {
@@ -106,20 +111,23 @@ li {
   margin-top: 15px;
 }
 
+.onSaleExplanation {
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
 
 .storePhoto {
-  width: 70px;
+  width: 76px;
   height: 80px;
   float: left;
-  margin-right: 23px; 
 }
 
 .storeSnippet {
-  margin-top: 15px;
   color: #808080;
   font-size: .75rem;
   font-weight: bold;
-  width: 220px;
+  width: 240px;
   display: inline-block;
 }
 
@@ -128,12 +136,27 @@ li {
   color: #808080;
   line-height: 18px;
   font-weight: bold;
+  padding-left: 92px;
+}
+
+.storeAddress{
+  padding-left: 92px;
+}
+
+.storeCityStateZip {
+  padding-left: 92px;
 }
 
 .productDeal {
   color: #ff7e1a;
   font-size: .72rem;
   line-height: 1.1rem;
+}
+
+.storePhotoDiv {
+  float: left;
+  height: 150px;
+  width: 50px;
 }
 
 .onSaleTitle {
@@ -174,21 +197,12 @@ li {
   margin-right: 12px;
 }
 
-.fa-check-circle{
-  color: #FFA500;
-  vertical-align: middle;
-  margin-right: 12px;
-}
-
-.fa-chevron-circle-right {
-  vertical-align: middle;
-}
-
 .chevronArrow {
   float: right;
   cursor: pointer;
   display: inline;
   margin-top: 25px;
+  margin-right: 4px;
 }
 
 * {
