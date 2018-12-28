@@ -59,8 +59,13 @@ li {
   width:670px;
 }
 
+.storeContainer {
+  height: 200px;
+}
+
 .gear {
   float: right;
+  margin-right: 7px;
 }
 .locationSubmitButton {
   background-color: #b2b2b2;
@@ -74,7 +79,7 @@ li {
 }
 
 .switch {
-  margin-left: 78px;
+  margin-left: 79px;
   font-weight: bold;
   font-size: 1rem;
   line-height: 31px;
@@ -106,17 +111,23 @@ li {
   width: 70px;
   height: 80px;
   float: left;
-  margin-right: 10px; 
+  margin-right: 23px; 
 }
 
 .storeSnippet {
   margin-top: 15px;
   color: #808080;
   font-size: .75rem;
+  font-weight: bold;
+  width: 220px;
+  display: inline-block;
 }
 
 .storeTitle {
   font-size: .875rem;
+  color: #808080;
+  line-height: 18px;
+  font-weight: bold;
 }
 
 .productDeal {
@@ -146,7 +157,7 @@ li {
 }
 
 .onSaleSection {
-  width: 312px;
+  width: 319px;
   margin-left: 13px;
 }
 
@@ -176,6 +187,8 @@ li {
 .chevronArrow {
   float: right;
   cursor: pointer;
+  display: inline;
+  margin-top: 25px;
 }
 
 * {
