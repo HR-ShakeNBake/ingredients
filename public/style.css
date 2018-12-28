@@ -50,11 +50,11 @@ li {
 }
 
 .container {
-  width: 1050px;
+  width: 940px;
 }
 
 .ingredientList {
-  width:70%;
+  width:625px;
 }
 
 .gear {
@@ -131,11 +131,13 @@ li {
   font-size: 1.5625rem;
   color: #2d2d2d;
   margin-right: 30px;
+  font-weight: 100;
 }
 
 .onSaleExplanation {
   font-size: .75rem;
   color: #808080;
+  font-weight: bold;
 }
 
 .productPhoto {

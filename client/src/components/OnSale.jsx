@@ -9,8 +9,14 @@ class OnSale extends Component {
     this.state = { 
       checked: false,
       locationForm: false,
-      storeInfo: {}
+      storeInfo: {},
+      gear: false,
      };
+  }
+
+  toggleGear() {
+    var newState = !this.state.gear
+    this.setState({gear: newState})
   }
  
   render() {
@@ -60,13 +66,16 @@ class OnSale extends Component {
           }          
         />
       </label>
-      {this.props.locationChecked
-        ? <button className="gear" style={this.state.locationForm ? {backgroundColor: "#ffa500" } : {backgroundColor: "#b2b2b2"}}><i className="fas fa-cog"></i></button>
+      {this.state.gear 
+            ? <img src="on_gear.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleGear.bind(this)} />
+            : <img src="off_gear.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleGear.bind(this)} />
+          }
+      <div className="onSaleExplanation">What's on sale near you</div>
+      {this.state.gear
+        ? <div><Form getStoreInfo={this.props.getStoreInfo} />  
+        </div>
         : null}
-      <div className="onSaleExplanation">Find out what's on sale near you</div>
-      {this.props.locationChecked
-        ? <div><Form getStoreInfo={this.props.getStoreInfo} /> <StoreDetails scrollToNextStore={this.props.scrollToNextStore} currentStoreInfo={this.props.currentStoreInfo} /> </div> 
-        : null}
+        <StoreDetails scrollToNextStore={this.props.scrollToNextStore} currentStoreInfo={this.props.currentStoreInfo} />
       </div>
     );
   }

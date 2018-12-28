@@ -14,7 +14,7 @@ class Ingredients extends React.Component {
       storeIds: [],
       currentStoreIndex: 0,
       currentStoreInfo: [{storeinfo: 'yo'}],
-      locationChecked: false
+      locationChecked: true
     };
   }
 
@@ -26,7 +26,7 @@ class Ingredients extends React.Component {
       .then(res => res.json())
       .then(storesArray => this.reduceStoresArray(storesArray))
       .then(storeIds => this.setState({ storeIds }))
-      .then(() => console.log(this.state))
+      .then(() => this.getStoreInfo())
   }
 
   reduceStoresArray(storesArray) {
