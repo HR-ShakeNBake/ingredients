@@ -66,17 +66,25 @@ class OnSale extends Component {
           }          
         />
       </label>
-      {this.state.gear 
+      {this.props.locationChecked
+        ? <span>{this.state.gear 
             ? <img src="on_gear.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleGear.bind(this)} />
             : <img src="off_gear.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleGear.bind(this)} />
-          }
-      <div className="onSaleExplanation">What's on sale near you</div>
-      {this.state.gear
-        ? <div><Form getStoreInfo={this.props.getStoreInfo} />  
+          }</span>
+        : null
+      }
+            
+      <div className="onSaleExplanation">What's on sale near you.</div>
+      {this.props.locationChecked 
+        ? <div>{this.state.gear
+          ? <div><Form getStoreInfo={this.props.getStoreInfo} />  
+          </div>
+          : null}
+          <StoreDetails scrollToNextStore={this.props.scrollToNextStore} currentStoreInfo={this.props.currentStoreInfo} />
+          </div>
+        : null 
+      }  
         </div>
-        : null}
-        <StoreDetails scrollToNextStore={this.props.scrollToNextStore} currentStoreInfo={this.props.currentStoreInfo} />
-      </div>
     );
   }
 }
