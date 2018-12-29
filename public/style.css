@@ -26,6 +26,19 @@ li {
 
 .summary {
   float: right;
+  height: 30px;
+  width: 260px; 
+  white-space: nowrap;
+  text-align: center; 
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 5px;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 
 .outerContainer {
@@ -49,6 +62,10 @@ li {
   float:right;
   position: relative;
   width: 345px;
+}
+
+.timer, .servings, .calories {
+  vertical-align: middle;
 }
 
 .container {
