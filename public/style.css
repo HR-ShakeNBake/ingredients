@@ -232,11 +232,12 @@ li {
 
 .arrow_box {
   position: relative;
-  border: 1px solid #b3b3b3;
-  width: 320px;
+  border: 1px solid #e6e6e6;
+  width: 281px;
+  height: 101px;
 }
 .arrow_box::after, .arrow_box::before {
-  bottom: 88%;
+  bottom: 98%;
   left: 65%;
   border: solid transparent;
   content: " ";
@@ -254,7 +255,7 @@ li {
 }
 .arrow_box::before {
   border-color: rgba(194, 225, 245, 0);
-  border-bottom-color: #b3b3b3;
+  border-bottom-color: #e6e6e6;
   border-width: 13px;
   margin-left: -13px;
 }
@@ -268,16 +269,68 @@ li {
 }
 
 .checkboxes {
-  margin-left: 180px;
+  margin-left: 8px;
 }
 
 .recipeSizeFormText {
   width: 30px;
 }
 
+.recipeSizeSubmit {
+  background-color: #b3b3b3;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  height: 40px;
+  width: 108px;
+  padding-top: 4px;
+  margin-left: 3px;
+  margin-right: 5px;
+}
+
 .recipeSizeForm {
   display: inline-block;
   vertical-align: center;
+}
+
+.radioButton1, .radioButton2 {
+
+}
+
+.radioSection {
+  float: right;
+  margin-top: 4px;
+}
+
+input[type='radio']:after {
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    top: -8px;
+    left: -11px;
+    position: relative;
+    background-color: #ffffff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid #e6e6e6;
+}
+
+input[type='radio']:checked:after {
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    top: -8px;
+    left: -11px;
+    position: relative;
+    background-color: #ff7e1a;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid #ff7e1a;
 }
 
 * {
