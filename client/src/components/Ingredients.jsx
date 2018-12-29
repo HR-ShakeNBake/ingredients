@@ -5,6 +5,7 @@ import $ from 'jquery';
 import Summary from './Summary.jsx'
 import IngredientsList from './IngredientsList.jsx'
 import OnSale from './OnSale.jsx'
+import RecipeSizeForm from './RecipeSizeForm.jsx'
 
 class Ingredients extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class Ingredients extends React.Component {
       storeIds: [],
       currentStoreIndex: 0,
       currentStoreInfo: [{storeinfo: 'yo'}],
-      locationChecked: true
+      locationChecked: true,
+      recipeForm: false,
     };
   }
 
@@ -84,6 +86,7 @@ class Ingredients extends React.Component {
           <Summary />
         </div>
         <div className="container">
+          <RecipeSizeForm />
           <div className="nav">
             <OnSale 
               currentStoreInfo={this.state.currentStoreInfo} 
