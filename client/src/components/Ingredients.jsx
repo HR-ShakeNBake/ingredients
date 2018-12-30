@@ -17,6 +17,7 @@ class Ingredients extends React.Component {
       currentStoreInfo: [{storeinfo: 'yo'}],
       locationChecked: true,
       servingsForm: false,
+      originalRecipeSize: 0,
       recipeSize: 0
     };
   }
@@ -30,11 +31,17 @@ class Ingredients extends React.Component {
       .then(storesArray => this.reduceStoresArray(storesArray))
       .then(storeIds => this.setState({ storeIds }))
       .then(() => this.setRecipeSize(this.state.recipe[0].serving_total))
+      .then(() => this.setOriginalRecipeSize())
       .then(() => this.getStoreInfo())
   }
 
   setRecipeSize(size) {
     this.setState({recipeSize: size})
+  }
+
+  setOriginalRecipeSize() {
+    let size = this.state.recipe[0].serving_total;
+    this.setState({originalRecipeSize: size})
   }
 
   reduceStoresArray(storesArray) {
@@ -99,7 +106,7 @@ class Ingredients extends React.Component {
         </div>
         <div className="container">
           {this.state.servingsForm
-            ? <RecipeSizeForm recipeSize={this.state.recipeSize}/>
+            ? <RecipeSizeForm recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize}/>
             : null
           }
           <div className="nav">
