@@ -24,7 +24,7 @@ class IndividualIngredient extends React.Component {
             ? <img src="checkmark.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
             : <img src="plus_icon.png" className="plusIcon" style={{height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
           }
-	      <span>{ingredient.qty} {ingredient.ps_product_id} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+	      <span>{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
         </div>
       : <div className="ingredientWithProduct">
           {this.state.addedToCart 
