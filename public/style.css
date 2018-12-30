@@ -84,7 +84,7 @@ li {
 
 .gear {
   float: right;
-  margin-right: 7px;
+  margin-right: 8px;
   cursor: pointer;
 }
 .locationSubmitButton {
@@ -101,7 +101,7 @@ li {
 }
 
 .switch {
-  margin-left: 68px;
+  margin-left: 67px;
   font-weight: bold;
   font-size: 1rem;
   line-height: 31px;
@@ -225,22 +225,22 @@ li {
 }
 
 .box {
-  margin-top: -18px;
+  margin-top: -19px;
   position: absolute;
   z-index: 100;
   background-color: white;
-  margin-left: 680px;
+  margin-left: 637px;
 }
 
 .arrow_box {
   position: relative;
   border: 1px solid #e6e6e6;
-  width: 281px;
+  width: 282px;
   height: 101px;
 }
 .arrow_box::after, .arrow_box::before {
   bottom: 98%;
-  left: 65%;
+  left: 61.5%;
   border: solid transparent;
   content: " ";
   height: 0;
