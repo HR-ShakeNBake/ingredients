@@ -41,7 +41,7 @@ for (var i = 1; i < 101; i++) {
 
 //INGREDIENT_LEGEND
 var ingredient_legend_array = [];
-var metricOptions = ['mL', 'mg', null, 'bunch', 'pinch'];
+var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunch', 'pinch'];
 
 var ingredientMetricCreator = function() {
   return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];

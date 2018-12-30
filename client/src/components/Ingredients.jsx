@@ -18,7 +18,8 @@ class Ingredients extends React.Component {
       locationChecked: true,
       servingsForm: false,
       originalRecipeSize: 0,
-      recipeSize: 0
+      recipeSize: 0,
+      metricSystem: 'US'
     };
   }
 
@@ -26,17 +27,24 @@ class Ingredients extends React.Component {
     fetch('http://localhost:5000/recipes/1')
       .then(res => res.json())
       .then(recipe => this.setState({ recipe }))
+      .then(() => this.setRecipeSize(this.state.recipe[0].serving_total))
       .then(() => fetch('http://localhost:5000/recipes/1/stores'))
       .then(res => res.json())
       .then(storesArray => this.reduceStoresArray(storesArray))
       .then(storeIds => this.setState({ storeIds }))
-      .then(() => this.setRecipeSize(this.state.recipe[0].serving_total))
       .then(() => this.setOriginalRecipeSize())
       .then(() => this.getStoreInfo())
   }
 
-  setRecipeSize(size) {
+
+  setRecipeSize(size, metricSystem) {
     this.setState({recipeSize: size})
+  }
+
+  setNewRecipeSize(size, metricSystem, e) {
+    console.log(e)
+    e.preventDefault()
+    this.setState({recipeSize: size})    
   }
 
   setOriginalRecipeSize() {
@@ -106,7 +114,7 @@ class Ingredients extends React.Component {
         </div>
         <div className="container">
           {this.state.servingsForm
-            ? <RecipeSizeForm recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize}/>
+            ? <RecipeSizeForm recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize} setNewRecipeSize={this.setNewRecipeSize.bind(this)}/>
             : null
           }
           <div className="nav">
