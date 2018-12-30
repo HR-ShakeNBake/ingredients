@@ -23,9 +23,9 @@ handleRadioChange(e) {
       <div className="box">
         <div className="arrow_box">
           <div className="checkboxes">
-          <div style={{fontSize: "13px", fontFamily: "Source Sans Pro", fontStyle: "italic", marginTop: "10px", marginBottom: "8px", color: "#000000", height: "18px"}}>Original recipe yields 8 servings</div>
+          <div style={{fontSize: "13px", fontFamily: "Source Sans Pro", fontStyle: "italic", marginTop: "10px", marginBottom: "8px", color: "#000000", height: "18px"}}>Original recipe yields {this.props.recipeSize} servings</div>
             <form onSubmit={this.handleSubmit} className="recipeSizeForm">
-              <input type="number" style={{fontSize: "18px", fontFamily: "Source Sans Pro", textAlign: "center", color: "#", height: "34px", marginBottom: "1px", width: "54px"}} value="8" onChange={this.handleChange} className="recipeSizeFormText" />
+              <input type="number" style={{fontSize: "18px", fontFamily: "Source Sans Pro", textAlign: "center", color: "#", height: "34px", marginBottom: "1px", width: "54px"}} value={this.props.recipeSize} onChange={this.handleChange} className="recipeSizeFormText" />
               <input type="submit" value="Adjust" style={{fontSize: "15px"}} className="recipeSizeSubmit" />
             </form>
           <span className="radioSection">
