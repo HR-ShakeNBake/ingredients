@@ -4,7 +4,7 @@ import IndividualIngredient from './IndividualIngredient.jsx'
 const IngredientsList = (props) => {
  
   const recipeItems = props.ingredients.map(ingredient => (
-      <IndividualIngredient key={ingredient.ingredient_id} ingredient={ingredient}/>
+      <IndividualIngredient key={ingredient.ingredient_id} ingredient={ingredient} locationChecked={props.locationChecked}/>
   ));
 
 

@@ -147,11 +147,15 @@ var recipes_ingredients_join = [];
 
 //100 recipes that have, on average, 10 ingredients
 recipe_legend_array.forEach(item => {
-  var ingredientsLength = Math.floor(Math.random()* 10);
-  var ingredientsQty = Math.ceil(Math.random() * 10);
+  var ingredientsLength = 5 + Math.floor(Math.random()* 10);
   var randomIngredientId = () => Math.ceil(Math.random()*100)
+  var randomIngredientList = [];
   for (var i = 0; i <= ingredientsLength; i++) {
-    recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
+    var randomIngredient = randomIngredientId();
+    if (!randomIngredientList.includes(randomIngredient)) {
+      var ingredientsQty = Math.ceil(Math.random() * 10);
+      recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
+    }
   }
 })
 

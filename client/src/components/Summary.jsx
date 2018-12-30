@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 function Summary(props) {
   return (
-  	<div>Calories, cook time will go here</div>
+  	<div className="summary">Calories, cook time will go here</div>
   	);
 }
 

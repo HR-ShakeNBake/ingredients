@@ -69,7 +69,8 @@ var selectFirstRecordForRecipe = function(id, cb) {
     INNER JOIN ingredient_legend il ON il.id = ri.ingredient_id
     INNER JOIN nutrition_legend nl on nl.id = r.id
     INNER JOIN instruction_legend inl on inl.id = r.id
-    WHERE r.id = ?`
+    WHERE r.id = ?
+    ORDER BY il.id ASC`
   connection.query(sql, queryArgs, cb)
 }
 
@@ -97,7 +98,7 @@ var getStoreInformation = function(id, cb) {
 }
 
 var getProductInformation = function(id, cb) {
-  var queryArgs = [1]
+  var queryArgs = [id]
   var sql = `
     SELECT 
         r.name recipe_name,
@@ -114,8 +115,11 @@ var getProductInformation = function(id, cb) {
         inl.cook_time,
         sl.id store_id,
         pl.id product_id,
-        pl.photo_url,
-        pl.name product_name
+        pl.photo_url product_url,
+        pl.name product_name,
+        ps.deal product_deal,
+        ps.store_id ps_store_id,
+        ps.product_id ps_product_id
       FROM recipe_legend r
       INNER JOIN recipes_ingredients ri ON ri.recipe_id = r.id
       INNER JOIN ingredient_legend il ON il.id = ri.ingredient_id

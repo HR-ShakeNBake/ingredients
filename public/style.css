@@ -1,12 +1,6 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: seagreen;
-}
-
-#main {
-  width: 50%;
-  margin: auto;
-  text-align: center;
+  font-family: "Source Sans Pro",Arial;
+  color: #b2b2b2;
 }
 
 ul {
@@ -14,9 +8,25 @@ ul {
   margin: 0;
 }
 
-.groceries {
-  margin: 10px;
-  list-style-type: none;
+li {
+  break-inside: avoid-column;
+}
+
+.title {
+  color: #4d4d4d;
+  font-size: 28px;
+  font-weight: lighter;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.summary {
+  float: right;
+}
+
+.outerContainer {
+  width: 1050px;
 }
 
 .list {
@@ -25,6 +35,8 @@ ul {
   column-count: 2;
   font-family: "Source Sans Pro",Arial;
   color: #2d2d2d;
+  list-style-type: none;
+  font-size: .888889rem;
 }
 
 .nav {
@@ -33,7 +45,11 @@ ul {
 }
 
 .container {
-  width: 700px;
+  width: 1050px;
+}
+
+.ingredientList {
+  width:70%;
 }
 
 .gear {
@@ -71,5 +87,78 @@ ul {
   cursor: pointer;
   height: 54px;
   width: 100%;
+}
 
+.productSnippet {
+  width: 300px;
+  height: 100px;
+  font-size: 0.78rem;
+  font-weight: bold;
+}
+
+.storePhoto {
+  width: 70px;
+  height: 80px;
+  float: left;
+  margin-right: 10px; 
+}
+
+.storeSnippet {
+  margin-top: 15px;
+  color: #808080;
+  font-size: .75rem;
+}
+
+.storeTitle {
+  font-size: .875rem;
+}
+
+.productDeal {
+  color: #FFA500;
+}
+
+.onSaleTitle {
+  font-size: 1.5625rem;
+  color: #2d2d2d;
+  margin-right: 30px;
+}
+
+.onSaleExplanation {
+  font-size: .75rem;
+  color: #808080;
+}
+
+.productPhoto {
+  width: 70px;
+  height: 80px;
+  float: right;
+}
+
+.onSaleSection {
+  width: 300px;
+}
+
+.ingredientWithoutProduct {
+  height: 65px;
+}
+
+.fa-plus-circle {
+  color: #b2b2b2;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.fa-check-circle{
+  color: #FFA500;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.fa-chevron-circle-right {
+  vertical-align: middle;
+}
+
+.chevronArrow {
+  float: right;
+  cursor: pointer;
 }
