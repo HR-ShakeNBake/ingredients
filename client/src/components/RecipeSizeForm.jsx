@@ -6,11 +6,16 @@ class RecipeSizeForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      metricSystem: true,
+      selectedRadio: 'Metric',
       recipeSize: 8
     };
   }
 
+handleRadioChange(e) {
+  this.setState({
+    selectedRadio: e.target.value
+  });
+}
 
   render() {
     let ingredient = this.props.ingredient;
@@ -25,12 +30,12 @@ class RecipeSizeForm extends React.Component {
             </form>
           <span className="radioSection">
             <div className="checkboxgroup" style={{marginRight: "24px"}}>
-              <input type="radio" name="radio" className="radioButton1" />
-              <label style={{marginTop: "12px", fontSize: "12px", color: "#000000"}} for="radioButton1">US</label>
+              <input type="radio" name="radio" value="US" checked={this.state.selectedRadio === 'US'} onChange={this.handleRadioChange.bind(this)} className="radioButton1" />
+              <label style={{marginTop: "12px", fontSize: "12px", color: "#000000"}} >US</label>
             </div>
             <div className="checkboxgroup" style={{marginRight: "14px"}}>
-              <input type="radio" name="radio" className="radioButton2" />
-              <label style={{marginTop: "12px", fontSize: "12px", color: "#000000"}} for="radioButton2">Metric</label>
+              <input type="radio" name="radio" value="Metric" checked={this.state.selectedRadio === 'Metric'} onChange={this.handleRadioChange.bind(this)} className="radioButton2" />
+              <label style={{marginTop: "12px", fontSize: "12px", color: "#000000"}} >Metric</label>
             </div>
           </span>
           </div>
