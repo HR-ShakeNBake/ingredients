@@ -16,7 +16,7 @@ class Ingredients extends React.Component {
       currentStoreIndex: 0,
       currentStoreInfo: [{storeinfo: 'yo'}],
       locationChecked: true,
-      recipeForm: false,
+      servingsForm: false
     };
   }
 
@@ -79,14 +79,23 @@ class Ingredients extends React.Component {
     this.setState({ locationChecked: checked });
   }
 
+  toggleServingsForm() {
+    console.log('clicked')
+    let newState = !this.state.servingsForm;
+    this.setState({servingsForm: newState});
+  }
+
   render() {
     return (
       <div className="outerContainer">
         <div className="title">Ingredients
-          <Summary />
+          <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} />
         </div>
         <div className="container">
-          <RecipeSizeForm />
+          {this.state.servingsForm
+            ? <RecipeSizeForm/>
+            : null
+          }
           <div className="nav">
             <OnSale 
               currentStoreInfo={this.state.currentStoreInfo} 
