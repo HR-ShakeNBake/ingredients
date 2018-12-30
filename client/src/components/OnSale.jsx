@@ -78,7 +78,7 @@ class OnSale extends Component {
       <div className="onSaleExplanation">What's on sale near you.</div>
       {this.props.locationChecked 
         ? <div>{this.state.gear
-          ? <div><Form getStoreInfo={this.props.getStoreInfo} />  
+          ? <div><Form scrollToNextStore={this.props.scrollToNextStore} getStoreInfo={this.props.getStoreInfo} />  
           </div>
           : null}
           <StoreDetails scrollToNextStore={this.props.scrollToNextStore} currentStoreInfo={this.props.currentStoreInfo} />

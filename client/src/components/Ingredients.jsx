@@ -19,7 +19,8 @@ class Ingredients extends React.Component {
       servingsForm: false,
       originalRecipeSize: 0,
       recipeSize: 0,
-      metricSystem: 'US'
+      metricSystem: 'US',
+      successMessage: false
     };
   }
 
@@ -42,9 +43,8 @@ class Ingredients extends React.Component {
   }
 
   setNewRecipeSize(size, metricSystem, e) {
-    console.log(e)
     e.preventDefault()
-    this.setState({recipeSize: size})    
+    this.setState({recipeSize: size}, this.createSuccessMessage)
   }
 
   setOriginalRecipeSize() {
@@ -101,9 +101,14 @@ class Ingredients extends React.Component {
   }
 
   toggleServingsForm() {
-    console.log('clicked')
     let newState = !this.state.servingsForm;
     this.setState({servingsForm: newState});
+  }
+
+  createSuccessMessage() {
+    this.setState({successMessage: true}, () => {
+      setTimeout(() => {this.setState({successMessage: false})}, 2500)
+    })
   }
 
   render() {
@@ -113,6 +118,9 @@ class Ingredients extends React.Component {
           <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} recipeSize={this.state.recipeSize} />
         </div>
         <div className="container">
+        {this.state.successMessage
+          ? <div className="successMessage">The ingredient list now reflects serving size.</div>
+          : null }
           {this.state.servingsForm
             ? <RecipeSizeForm recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize} setNewRecipeSize={this.setNewRecipeSize.bind(this)}/>
             : null

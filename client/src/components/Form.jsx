@@ -15,7 +15,10 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.getStoreInfo()
+   //this.props.getStoreInfo(); 
+   //The above line is where you would update your code to invoke a function that sends a GET req to get store info on a different store
+   //The below line is for FEC and is not the proper functionality for a full stack component
+    this.props.scrollToNextStore();
   }
 
   render() {

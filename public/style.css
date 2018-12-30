@@ -84,6 +84,7 @@ li {
 .gear {
   float: right;
   margin-right: 7px;
+  cursor: pointer;
 }
 .locationSubmitButton {
   background-color: #b2b2b2;
@@ -331,6 +332,23 @@ input[type='radio']:checked:after {
     display: inline-block;
     visibility: visible;
     border: 1px solid #ff7e1a;
+}
+
+.successMessage {
+  height: 36px;
+  border-radius: .85rem;
+  padding-top: 13px;
+  top: 35%;
+  left: 30%;
+  width: 500px;
+  background-color: #8ac13e;
+  vertical-align: middle;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  z-index: 1001;
+  font-size: 1rem;
 }
 
 * {
