@@ -51,6 +51,7 @@ li {
   -webkit-column-count: 2; /* Chrome, Safari, Opera */
   -moz-column-count: 2; /* Firefox */
   column-count: 2;
+  column-fill: auto;
   font-family: "Source Sans Pro",Arial;
   color: #2d2d2d;
   list-style-type: none;
@@ -212,7 +213,7 @@ li {
 }
 
 .ingredientWithProduct {
-  height: 165px;
+  height: 147px;
 }
 
 .plusIcon {

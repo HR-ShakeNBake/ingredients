@@ -183,9 +183,9 @@ var products_stores_join = [];
 for (var i = 1; i < 21; i++) {
   //500 products
   for (var j = 1; j < 501; j+=5) {
-    //A store has a 25% chance of carrying a product
+    //A store has a 50% chance of carrying a product
     //Each store will only carry one product for a given ingredient
-    if (Math.random() > 0.25) {
+    if (Math.random() > 0.50) {
       products_stores_join.push([i, j, productDealCreator()])
     }
   }
