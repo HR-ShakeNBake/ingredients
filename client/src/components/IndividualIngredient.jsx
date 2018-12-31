@@ -25,14 +25,21 @@ class IndividualIngredient extends React.Component {
             ? <img src="checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
             : <img src="plus_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
           }
-	      <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+
+          {this.props.metricSystem === 'US' 
+            ? <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+            : <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty2} {ingredient.ingredient_metric2} {ingredient.ingredient_name} </span>
+          }
         </div>
       : <div className="ingredientWithProduct">
           {this.state.addedToCart 
             ? <img src="checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
             : <img src="plus_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
           }
-          <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+          {this.props.metricSystem === 'US' 
+            ? <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>
+            : <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty2} {ingredient.ingredient_metric2} {ingredient.ingredient_name} </span>
+          }
           <ProductSnippet ingredient={ingredient}/>
         </div>
     }

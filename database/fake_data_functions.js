@@ -142,7 +142,7 @@ for (var i = 1; i < 101; i++) {
 //RECIPES-INGREDIENTS JOIN TABLE
 var recipes_ingredients_join = [];
 
-var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunch', 'pinch'];
+var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunches', 'pinches'];
 
 var ingredientMetricCreator = function() {
   return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];

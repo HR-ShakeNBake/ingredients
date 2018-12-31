@@ -47,10 +47,11 @@ class Ingredients extends React.Component {
     e.preventDefault();
     let oldRecipeSize = this.state.recipeSize;
     let newRecipeSize = size;
-    this.adjustIngredientPortions(oldRecipeSize, newRecipeSize);
+    this.setState({metricSystem: metricSystem}, this.adjustIngredientPortions(oldRecipeSize, newRecipeSize));
   }
 
   adjustIngredientPortions(oldRecipeSize, newRecipeSize) {
+    console.log(this.state)
     let currentRecipe =  this.state.recipe;
     let newRecipe = convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize);
     this.setState({recipe: newRecipe}, 
