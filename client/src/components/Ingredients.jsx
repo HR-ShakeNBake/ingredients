@@ -21,7 +21,9 @@ class Ingredients extends React.Component {
       originalRecipeSize: 0,
       recipeSize: 0,
       metricSystem: 'US',
-      successMessage: false
+      successMessage: false,
+      addItemMessage: false,
+      addAllItemsMessage: false
     };
   }
 
@@ -51,7 +53,6 @@ class Ingredients extends React.Component {
   }
 
   adjustIngredientPortions(oldRecipeSize, newRecipeSize) {
-    console.log(this.state)
     let currentRecipe =  this.state.recipe;
     let newRecipe = convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize);
     this.setState({recipe: newRecipe}, 
@@ -126,7 +127,18 @@ class Ingredients extends React.Component {
     this.setState({successMessage: true}, () => {
       setTimeout(() => {this.setState({successMessage: false})}, 2500)
     })
-    console.log(this.state)
+  }
+
+  createAddItemMessage() {
+    this.setState({addItemMessage: true}, () => {
+      setTimeout(() => {this.setState({addItemMessage: false})}, 2500)
+    })
+  }
+
+  createAddAllItemsMessage() {
+    this.setState({addAllItemsMessage: true}, () => {
+      setTimeout(() => {this.setState({addAllItemsMessage: false})}, 2500)
+    })
   }
 
   render() {
@@ -143,6 +155,12 @@ class Ingredients extends React.Component {
         {this.state.successMessage
           ? <div className="successMessage">The ingredient list now reflects serving size.</div>
           : null }
+        {this.state.addItemMessage
+          ? <div className="successMessage">Added to shopping list.</div>
+          : null }
+        {this.state.addAllItemsMessage
+          ? <div className="successMessage">Shopping list saved.</div>
+          : null }          
           {this.state.servingsForm
             ? <RecipeSizeForm handleRadioChange={this.handleRadioChange.bind(this)} metricSystem={this.state.metricSystem} recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize} setNewRecipeSize={this.setNewRecipeSize.bind(this)}/>
             : null
@@ -156,7 +174,7 @@ class Ingredients extends React.Component {
               scrollToNextStore={this.scrollToNextStore.bind(this)} />
           </div>
           <div className="ingredientList">
-            <IngredientsList metricSystem={this.state.metricSystem} ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
+            <IngredientsList metricSystem={this.state.metricSystem} ingredients={this.state.recipe} locationChecked={this.state.locationChecked} addItemMessage={this.createAddItemMessage.bind(this)} addAllItemsMessage={this.createAddAllItemsMessage.bind(this)} />
           </div>
         </div>
       </div>
