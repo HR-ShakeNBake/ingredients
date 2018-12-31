@@ -6,6 +6,7 @@ import Summary from './Summary.jsx'
 import IngredientsList from './IngredientsList.jsx'
 import OnSale from './OnSale.jsx'
 import RecipeSizeForm from './RecipeSizeForm.jsx'
+import {convertRecipeArray} from './StateFunctions.js'
 
 class Ingredients extends React.Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class Ingredients extends React.Component {
     fetch('http://localhost:5000/recipes/1')
       .then(res => res.json())
       .then(recipe => this.setState({ recipe }))
-      .then(() => console.log(this.state.recipe))
       .then(() => this.setRecipeSize(this.state.recipe[0].serving_total))
       .then(() => fetch('http://localhost:5000/recipes/1/stores'))
       .then(res => res.json())
@@ -44,8 +44,21 @@ class Ingredients extends React.Component {
   }
 
   setNewRecipeSize(size, metricSystem, e) {
-    e.preventDefault()
-    this.setState({recipeSize: size}, this.createSuccessMessage)
+    e.preventDefault();
+    let oldMetricSystem = this.state.metricSystem;
+    let newMetricSystem = metricSystem;
+    let oldRecipeSize = this.state.recipeSize;
+    let newRecipeSize = size;
+    this.adjustIngredientPortions(oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize);
+  }
+
+  adjustIngredientPortions(oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize) {
+    let currentRecipe =  this.state.recipe;
+    let newRecipe = convertRecipeArray(currentRecipe, oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize);
+    console.log(newRecipe)
+    this.setState({recipe: newRecipe}, 
+      this.setState({recipeSize: newRecipeSize}, 
+        this.createSuccessMessage));
   }
 
   setOriginalRecipeSize() {
@@ -93,7 +106,6 @@ class Ingredients extends React.Component {
         results.push(ingredient)
       }
     }
-    console.log(results)
     return results;
   }
 

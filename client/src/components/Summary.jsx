@@ -9,9 +9,6 @@ class Summary extends React.Component {
     };
   }
 
-
-
-
   render() {
 	  return (
 	  	<div style={{fontWeight: 600}} className="summary">

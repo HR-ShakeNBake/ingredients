@@ -21,7 +21,7 @@ li {
   padding-bottom: 10px;
   margin-left: 5px;
   padding-left: 10px;
-  width: 910px;
+  width: 907px;
 }
 
 .summary {
@@ -33,7 +33,7 @@ li {
   font-size: 14px;
   font-weight: 500;
   padding-top: 5px;
-  margin-right: 23px;
+  margin-right: 22px;
 }
 
 .helper {
@@ -95,10 +95,14 @@ li {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  height: 74px;
-  width: 74px;
+  height: 70px;
+  width: 70px;
   padding-top: 4px;
 }
+
+.zipCodeForm::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #b2b2b2;
+} 
 
 .switch {
   margin-left: 67px;
@@ -117,7 +121,7 @@ li {
   margin-left: 7px;
   cursor: pointer;
   height: 60px;
-  width: 290px;
+  width: 279px;
   margin-bottom: 3px;
 }
 
@@ -240,7 +244,7 @@ li {
 }
 .arrow_box::after, .arrow_box::before {
   bottom: 98%;
-  left: 61.5%;
+  left: 61%;
   border: solid transparent;
   content: " ";
   height: 0;
