@@ -36,7 +36,6 @@ class Ingredients extends React.Component {
       .then(storeIds => this.setState({ storeIds }))
       .then(() => this.setOriginalRecipeSize())
       .then(() => this.getStoreInfo())
-      .then(() => console.log(this.state.recipe))
   }
 
 
@@ -46,17 +45,14 @@ class Ingredients extends React.Component {
 
   setNewRecipeSize(size, metricSystem, e) {
     e.preventDefault();
-    let oldMetricSystem = this.state.metricSystem;
-    let newMetricSystem = metricSystem;
     let oldRecipeSize = this.state.recipeSize;
     let newRecipeSize = size;
-    this.adjustIngredientPortions(oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize);
+    this.adjustIngredientPortions(oldRecipeSize, newRecipeSize);
   }
 
-  adjustIngredientPortions(oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize) {
+  adjustIngredientPortions(oldRecipeSize, newRecipeSize) {
     let currentRecipe =  this.state.recipe;
-    let newRecipe = convertRecipeArray(currentRecipe, oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize);
-    console.log(newRecipe)
+    let newRecipe = convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize);
     this.setState({recipe: newRecipe}, 
       this.setState({recipeSize: newRecipeSize}, 
         this.createSuccessMessage));
@@ -119,6 +115,12 @@ class Ingredients extends React.Component {
     this.setState({servingsForm: newState});
   }
 
+  handleRadioChange(e) {
+  this.setState({
+    metricSystem: e.target.value
+  });
+}
+
   createSuccessMessage() {
     this.setState({successMessage: true}, () => {
       setTimeout(() => {this.setState({successMessage: false})}, 2500)
@@ -140,7 +142,7 @@ class Ingredients extends React.Component {
           ? <div className="successMessage">The ingredient list now reflects serving size.</div>
           : null }
           {this.state.servingsForm
-            ? <RecipeSizeForm recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize} setNewRecipeSize={this.setNewRecipeSize.bind(this)}/>
+            ? <RecipeSizeForm handleRadioChange={this.handleRadioChange.bind(this)} metricSystem={this.state.metricSystem} recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize} setNewRecipeSize={this.setNewRecipeSize.bind(this)}/>
             : null
           }
           <div className="nav">

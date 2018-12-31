@@ -110,6 +110,8 @@ var getProductInformation = function(id, cb) {
         r.owner recipe_owner,
         ri.qty qty,
         ri.metric ingredient_metric,
+        ri.qty2 qty2,
+        ri.metric2 ingredient_metric2,
         il.id ingredient_id,
         il.name ingredient_name,
         il.category ingredient_category,

@@ -4,22 +4,13 @@ export function toggleAddedToCart(state) {
 	return {addedToCart: !state.addedToCart}
 }
 
-export function convertRecipeArray(currentRecipe, oldMetricSystem, newMetricSystem, oldRecipeSize, newRecipeSize) {
+export function convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize) {
 	//object that translates between 2 types of objects
-	let metricToUs = {
-
-	}
-
-	let usToMetric = {
-
-	}
 
 	let convertSizeFunction = function(input) {
 
 	}
-	if (oldMetricSystem !== newMetricSystem) {
-		//do something
-	}
+
 	var result = [];
 	console.log(currentRecipe)
 
@@ -42,8 +33,10 @@ export function convertRecipeArray(currentRecipe, oldMetricSystem, newMetricSyst
 				recipe_owner: ingredient.recipe_owner,
 				serving_total: ingredient.serving_total,
 				store_id: ingredient.store_id,
-				qty: (ingredient.qty * newRecipeSize / oldRecipeSize).toFixed(2),
-				ingredient_metric: ingredient.ingredient_metric
+				qty: (ingredient.qty * newRecipeSize / oldRecipeSize).toFixed(),
+				ingredient_metric: ingredient.ingredient_metric,
+				qty2: (ingredient.qty2 * newRecipeSize / oldRecipeSize).toFixed(),
+				ingredient_metric2: ingredient.ingredient_metric2
 			}
 			return obj;
 	  });

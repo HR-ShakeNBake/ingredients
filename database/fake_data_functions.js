@@ -165,8 +165,8 @@ recipe_legend_array.forEach(item => {
       }
 
       else if (ingredientMetric === 'ounces') {
-        var ingredientQty2 = convert(ingredientsQty).from('oz').to('mg');
-        var ingredientMetric2 = 'mL';        
+        var ingredientQty2 = convert(ingredientsQty).from('oz').to('g');
+        var ingredientMetric2 = 'g';        
       }
 
       else if (ingredientMetric === 'tablespoons') {
