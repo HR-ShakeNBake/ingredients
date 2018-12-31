@@ -14,6 +14,7 @@ class IndividualIngredient extends React.Component {
     this.setState(toggleAddedToCart(this.state))
   };
 
+
   render() {
     let ingredient = this.props.ingredient;
   	return (

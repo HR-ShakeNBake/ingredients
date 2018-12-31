@@ -115,7 +115,7 @@ for (var i = 1; i < 501; i++) {
 var nutrition_legend_array = [];
 
 var nutrition_calorie_creator = function() {
-  return Math.ceil(Math.random() * 200);
+  return Math.ceil(Math.random() * 500);
 }
 
 var nutrition_serving_total_creator = function() {

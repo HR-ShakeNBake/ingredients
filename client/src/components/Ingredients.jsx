@@ -128,7 +128,7 @@ class Ingredients extends React.Component {
     return (
       <div className="outerContainer">
         <div className="title">Ingredients
-          <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} recipeSize={this.state.recipeSize} />
+          <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} prepTime={this.state.recipe[0].prep_time} cookTime={this.state.recipe[0].cook_time} calories={this.state.recipe[0].calories} recipeSize={this.state.recipeSize} />
         </div>
         <div className="container">
         {this.state.successMessage
