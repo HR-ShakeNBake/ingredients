@@ -1,5 +1,6 @@
 var faker = require('faker');
 var math = require('mathjs');
+var convert = require('convert-units');
 
 //UTILITY FUNCTION
 var randomInArray = function(array) {
@@ -42,11 +43,6 @@ for (var i = 1; i < 101; i++) {
 
 //INGREDIENT_LEGEND
 var ingredient_legend_array = [];
-// var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunch', 'pinch'];
-
-// var ingredientMetricCreator = function() {
-//   return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];
-// }
 
 var ingredientNameCreator = function() {
   return faker.lorem.word();
@@ -161,7 +157,34 @@ recipe_legend_array.forEach(item => {
     var randomIngredient = randomIngredientId();
     if (!randomIngredientList.includes(randomIngredient)) {
       var ingredientsQty = Math.ceil(Math.random() * 10);
-      recipes_ingredients_join.push([item[0], ingredientsQty, ingredientMetricCreator(), randomIngredientId() ])
+      var ingredientMetric = ingredientMetricCreator();
+      
+      if (ingredientMetric === 'cups') {
+        var ingredientQty2 = convert(ingredientsQty).from('cup').to('ml');
+        var ingredientMetric2 = 'mL';
+      }
+
+      else if (ingredientMetric === 'ounces') {
+        var ingredientQty2 = convert(ingredientsQty).from('oz').to('mg');
+        var ingredientMetric2 = 'mL';        
+      }
+
+      else if (ingredientMetric === 'tablespoons') {
+        var ingredientQty2 = convert(ingredientsQty).from('Tbs').to('ml');
+        var ingredientMetric2 = 'mL';
+      }
+
+      else if (ingredientMetric === 'teaspoons') {
+        var ingredientQty2 = convert(ingredientsQty).from('tsp').to('ml');
+        var ingredientMetric2 = 'mL';
+      }
+
+      else {
+        var ingredientQty2 = ingredientsQty;
+        var ingredientMetric2 = ingredientMetric;        
+      }
+
+      recipes_ingredients_join.push([item[0], ingredientsQty, ingredientMetric, ingredientQty2, ingredientMetric2, randomIngredientId() ])
     }
   }
 })

@@ -52,6 +52,8 @@ CREATE TABLE recipes_ingredients (
   recipe_id int,
   qty int,
   metric VARCHAR(20),
+  qty2 int,
+  metric2 VARCHAR(20),
   ingredient_id int,
   FOREIGN KEY (recipe_id) references recipe_legend(id),
   FOREIGN KEY (ingredient_id) references ingredient_legend(id)

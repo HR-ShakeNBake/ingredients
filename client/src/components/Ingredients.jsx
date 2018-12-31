@@ -36,6 +36,7 @@ class Ingredients extends React.Component {
       .then(storeIds => this.setState({ storeIds }))
       .then(() => this.setOriginalRecipeSize())
       .then(() => this.getStoreInfo())
+      .then(() => console.log(this.state.recipe))
   }
 
 

@@ -65,7 +65,7 @@ var seedDatabase = function(err, cb) {
 
   //RECIPES_INGREDIENTS_JOIN TABLE
   var insertIntoRecipesIngredientsTable = function(cb) {
-   var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, metric, ingredient_id) VALUES ?";
+   var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, metric, qty2, metric2, ingredient_id) VALUES ?";
     connection.query(sql, [fakeData.recipes_ingredients_join], cb);
   }
 
