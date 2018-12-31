@@ -1,4 +1,5 @@
 var faker = require('faker');
+var math = require('mathjs');
 
 //UTILITY FUNCTION
 var randomInArray = function(array) {
@@ -41,11 +42,11 @@ for (var i = 1; i < 101; i++) {
 
 //INGREDIENT_LEGEND
 var ingredient_legend_array = [];
-var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunch', 'pinch'];
+// var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunch', 'pinch'];
 
-var ingredientMetricCreator = function() {
-  return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];
-}
+// var ingredientMetricCreator = function() {
+//   return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];
+// }
 
 var ingredientNameCreator = function() {
   return faker.lorem.word();
@@ -68,7 +69,7 @@ var ingredientCategoryCreator = function() {
 }
 
 for (var i = 1; i < 501; i++) {
-  ingredient_legend_array.push([i, ingredientMetricCreator(), ingredientNameCreator(), ingredientCategoryCreator()])
+  ingredient_legend_array.push([i, ingredientNameCreator(), ingredientCategoryCreator()])
 }
 
 //STORE LEGEND
@@ -145,6 +146,12 @@ for (var i = 1; i < 101; i++) {
 //RECIPES-INGREDIENTS JOIN TABLE
 var recipes_ingredients_join = [];
 
+var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunch', 'pinch'];
+
+var ingredientMetricCreator = function() {
+  return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];
+}
+
 //100 recipes that have, on average, 10 ingredients
 recipe_legend_array.forEach(item => {
   var ingredientsLength = 5 + Math.floor(Math.random()* 10);
@@ -154,7 +161,7 @@ recipe_legend_array.forEach(item => {
     var randomIngredient = randomIngredientId();
     if (!randomIngredientList.includes(randomIngredient)) {
       var ingredientsQty = Math.ceil(Math.random() * 10);
-      recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
+      recipes_ingredients_join.push([item[0], ingredientsQty, ingredientMetricCreator(), randomIngredientId() ])
     }
   }
 })

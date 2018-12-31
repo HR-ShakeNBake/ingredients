@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon ./server/index.js",
     "react-dev": "webpack -d --watch",
-    "run-schema": "mysql -u root < ./database/schema.sql",
+    "run-schema": "mysql -u root -p < ./database/schema.sql",
     "run-seed": "nodemon ./database/fake_data_seed.js",
     "start-live-server": "live-server --port=8081",
     "test": "jest"

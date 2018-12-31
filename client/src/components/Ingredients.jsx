@@ -125,10 +125,14 @@ class Ingredients extends React.Component {
   }
 
   render() {
+    let totalMins = this.state.recipe[0].cook_time + this.state.recipe[0].prep_time;
+    let totalHours = Math.floor(totalMins / 60);
+    let remainingMins = totalMins % 60;
+
     return (
       <div className="outerContainer">
         <div className="title">Ingredients
-          <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} prepTime={this.state.recipe[0].prep_time} cookTime={this.state.recipe[0].cook_time} calories={this.state.recipe[0].calories} recipeSize={this.state.recipeSize} />
+          <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} prepHours={totalHours} prepMins={remainingMins} calories={this.state.recipe[0].calories} recipeSize={this.state.recipeSize} />
         </div>
         <div className="container">
         {this.state.successMessage
