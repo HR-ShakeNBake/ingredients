@@ -18,7 +18,7 @@ class IngredientsList extends React.Component {
 
   render() {
   	var recipeItems = this.props.ingredients.map(ingredient => (
-      <IndividualIngredient key={Math.random() *ingredient.ingredient_id} ingredient={ingredient} locationChecked={this.props.locationChecked}/>
+      <IndividualIngredient metricSystem={this.props.metricSystem} key={Math.random() *ingredient.ingredient_id} ingredient={ingredient} locationChecked={this.props.locationChecked}/>
   ));
 	  return (
 	    <div className='list'>

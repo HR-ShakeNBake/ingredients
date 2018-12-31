@@ -36,11 +36,11 @@ handleSizeChange(e) {
             </form>
           <span className="radioSection">
             <div className="checkboxgroup" style={{marginRight: "24px"}}>
-              <input type="radio" name="radio" value="US" checked={this.props.metricSystem === 'US'} onChange={this.props.handleRadioChange} className="radioButton1" />
+              <input type="radio" name="radio" value="US" checked={this.state.selectedRadio === 'US'} onChange={this.handleRadioChange.bind(this)} className="radioButton1" />
               <label style={{marginTop: "12px", fontSize: "12px", color: "#000000"}} >US</label>
             </div>
             <div className="checkboxgroup" style={{marginRight: "14px"}}>
-              <input type="radio" name="radio" value="Metric" checked={this.state.metricSystem === 'Metric'} onChange={this.props.handleRadioChange} className="radioButton2" />
+              <input type="radio" name="radio" value="Metric" checked={this.state.selectedRadio === 'Metric'} onChange={this.handleRadioChange.bind(this)} className="radioButton2" />
               <label style={{marginTop: "12px", fontSize: "12px", color: "#000000"}} >Metric</label>
             </div>
           </span>

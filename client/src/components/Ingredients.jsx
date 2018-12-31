@@ -125,6 +125,7 @@ class Ingredients extends React.Component {
     this.setState({successMessage: true}, () => {
       setTimeout(() => {this.setState({successMessage: false})}, 2500)
     })
+    console.log(this.state)
   }
 
   render() {
@@ -154,7 +155,7 @@ class Ingredients extends React.Component {
               scrollToNextStore={this.scrollToNextStore.bind(this)} />
           </div>
           <div className="ingredientList">
-            <IngredientsList ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
+            <IngredientsList metricSystem={this.state.metricSystem} ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
           </div>
         </div>
       </div>
