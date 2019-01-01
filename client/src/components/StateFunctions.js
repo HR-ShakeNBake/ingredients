@@ -5,16 +5,8 @@ export function toggleAddedToCart(state) {
 }
 
 export function convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize) {
-	//object that translates between 2 types of objects
 
-	let convertSizeFunction = function(input) {
-
-	}
-
-	var result = [];
-	console.log(currentRecipe)
-
-	  result = currentRecipe.map(function(ingredient) {
+	  var result = currentRecipe.map(function(ingredient) {
 	  	let obj = {
 		  	calories: ingredient.calories,
 				cook_time: ingredient.cook_time,
@@ -40,6 +32,5 @@ export function convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize) 
 			}
 			return obj;
 	  });
-	console.log(result)
 	return result;
 }
