@@ -72,7 +72,16 @@ for (var i = 1; i < 501; i++) {
 var store_legend_array = [];
 
 var storeImageUlrCreator = function() {
-  return faker.internet.avatar();
+  var storeImages = [
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/entityType/retailerLocation/entityId/42353/usage/getRetailerLocation/chain/143x48/jewel-osco-logo-360-150.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/94123/entityType/retailerLocation/entityId/83701/usage/getRetailerLocation/chain/143x48/amazonfresh-logo-360-105-v2.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/94123/entityType/retailerLocation/entityId/62809/usage/getRetailerLocation/chain/143x48/safeway-logo-360-105.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60076/entityType/retailerLocation/entityId/68756/usage/getRetailerLocation/chain/143x48/walmart-360-105.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/33136/entityType/retailerLocation/entityId/24288/usage/getRetailerLocation/chain/143x48/winn-dixie-logo-360-105.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/78703/entityType/retailerLocation/entityId/54300/usage/getRetailerLocation/chain/143x48/randalls-logo-360-105.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/78722/entityType/retailerLocation/entityId/54320/usage/getRetailerLocation/chain/143x48/fiesta-mart-logo-360-105.png.d.png',
+  ]
+  return storeImages[Math.floor(Math.random()*storeImages.length)];
 }
 
 var storeNameCreator = function() {
@@ -96,7 +105,20 @@ for (var i = 1; i < 21; i++) {
 var product_legend_array = [];
 
 var productPhotoUrlCreator = function() {
-  return faker.internet.avatar();
+  var productImages = [
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/73301/recipeId/465992/upcValue/BIU_WMT18Dec1226_ChkBrst/entityType/promotion/entityId/55321207/retailerLocationId/69772/usage/getRecipeInformationByExternalId/promotion/200x188/144/BIU_WMT18Dec1226_ChkBrst.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/73301/recipeId/465992/upcValue/BIU_WMT18Dec1226_YlwOn_Five/entityType/promotion/entityId/55321280/retailerLocationId/69772/usage/getRecipeInformationByExternalId/promotion/200x188/144/BIU_WMT18Dec1226_YlwOn_Five.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/94123/recipeId/465992/upcValue/BIU_AmznFrsh_B000P6J1NQ/entityType/promotion/entityId/45916780/retailerLocationId/83701/usage/getRecipeInformationByExternalId/promotion/200x188/300/BIU_AmznFrsh_B000P6J1NQ.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/94123/recipeId/465992/upcValue/BIU_AmznFrsh_B008Y2QSEI/entityType/promotion/entityId/54682106/retailerLocationId/83701/usage/getRecipeInformationByExternalId/promotion/200x188/330/BIU_AmznFrsh_B008Y2QSEI.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/94123/isSI/recipeId/467273/upcValue/BIU_Swanson_CBROTH/entityType/promotion/entityId/43731554/usage/getRecipeInformationByExternalId/promotion/200x188/129/BIU_Swanson_CBROTH.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/recipeId/467273/upcValue/DEMO_Walmart_SIM_Salt/entityType/promotion/entityId/21893164/retailerLocationId/68756/usage/getRecipeInformationByExternalId/promotion/200x188/144/DEMO_Walmart_SIM_Salt.png.d.png',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/isSI/recipeId/467273/upcValue/BIU_Swanson_BBROTH/entityType/promotion/entityId/43731556/usage/getRecipeInformationByExternalId/promotion/200x188/129/BIU_Swanson_BBROTH.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/recipeId/444350/upcValue/015800030621/entityType/promotion/entityId/54595414/retailerLocationId/68756/usage/getRecipeInformationByExternalId/promotion/200x188/308/015800030621.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/recipeId/455856/upcValue/DEMO_Walmart_SIM_Flour/entityType/promotion/entityId/17244823/retailerLocationId/68756/usage/getRecipeInformationByExternalId/promotion/200x188/144/DEMO_Walmart_SIM_Flour.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/recipeId/455856/upcValue/BIU_WMT18Dec1226_Orange/entityType/promotion/entityId/55321213/retailerLocationId/68756/usage/getRecipeInformationByExternalId/promotion/200x188/144/BIU_WMT18Dec1226_Orange.jpg.d.jpg',
+  'https://images.groceryserver.com/groceryserver/haxor/log/clientId/bfeb1eb4e751f03bceffaa649e977927/zipCode/60091/retailerLocationId/68756/recipeId/455856/upcValue/MWS_WMT18Dec1226_Grn_Bn/entityType/promotion/entityId/55321211/usage/getContentPairings/promotion/200x188/144/MWS_WMT18Dec1226_Grn_Bn.jpg.d.jpg'
+  ]
+  return productImages[Math.floor(Math.random()*productImages.length)];
 }
 
 var productNameCreator = function() {

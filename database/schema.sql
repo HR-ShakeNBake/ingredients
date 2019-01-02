@@ -26,7 +26,7 @@ CREATE TABLE instruction_legend (
 
 CREATE TABLE store_legend (
   id int NOT NULL AUTO_INCREMENT,
-  photo_url VARCHAR(100),
+  photo_url VARCHAR(500),
   name VARCHAR(50),
   address VARCHAR(100),
   city_state_zip VARCHAR(99),
@@ -43,7 +43,7 @@ CREATE TABLE ingredient_legend (
 
 CREATE TABLE product_legend (
   id int NOT NULL AUTO_INCREMENT,
-  photo_url VARCHAR(100),
+  photo_url VARCHAR(500),
   name VARCHAR(100),
   PRIMARY KEY (id)
 );
