@@ -5,6 +5,8 @@ import $ from 'jquery';
 import Summary from './Summary.jsx'
 import IngredientsList from './IngredientsList.jsx'
 import OnSale from './OnSale.jsx'
+import RecipeSizeForm from './RecipeSizeForm.jsx'
+import {convertRecipeArray} from './StateFunctions.js'
 
 class Ingredients extends React.Component {
   constructor(props) {
@@ -14,7 +16,14 @@ class Ingredients extends React.Component {
       storeIds: [],
       currentStoreIndex: 0,
       currentStoreInfo: [{storeinfo: 'yo'}],
-      locationChecked: false
+      locationChecked: true,
+      servingsForm: false,
+      originalRecipeSize: 0,
+      recipeSize: 0,
+      metricSystem: 'US',
+      successMessage: false,
+      addItemMessage: false,
+      addAllItemsMessage: false
     };
   }
 
@@ -22,11 +31,38 @@ class Ingredients extends React.Component {
     fetch('http://localhost:5000/recipes/1')
       .then(res => res.json())
       .then(recipe => this.setState({ recipe }))
+      .then(() => this.setRecipeSize(this.state.recipe[0].serving_total))
       .then(() => fetch('http://localhost:5000/recipes/1/stores'))
       .then(res => res.json())
       .then(storesArray => this.reduceStoresArray(storesArray))
       .then(storeIds => this.setState({ storeIds }))
-      .then(() => console.log(this.state))
+      .then(() => this.setOriginalRecipeSize())
+      .then(() => this.getStoreInfo())
+  }
+
+
+  setRecipeSize(size, metricSystem) {
+    this.setState({recipeSize: size})
+  }
+
+  setNewRecipeSize(size, metricSystem, e) {
+    e.preventDefault();
+    let oldRecipeSize = this.state.recipeSize;
+    let newRecipeSize = size;
+    this.setState({metricSystem: metricSystem}, this.adjustIngredientPortions(oldRecipeSize, newRecipeSize));
+  }
+
+  adjustIngredientPortions(oldRecipeSize, newRecipeSize) {
+    let currentRecipe =  this.state.recipe;
+    let newRecipe = convertRecipeArray(currentRecipe, oldRecipeSize, newRecipeSize);
+    this.setState({recipe: newRecipe}, 
+      this.setState({recipeSize: newRecipeSize}, 
+        this.createSuccessMessage));
+  }
+
+  setOriginalRecipeSize() {
+    let size = this.state.recipe[0].serving_total;
+    this.setState({originalRecipeSize: size})
   }
 
   reduceStoresArray(storesArray) {
@@ -69,7 +105,6 @@ class Ingredients extends React.Component {
         results.push(ingredient)
       }
     }
-    console.log(results)
     return results;
   }
 
@@ -77,25 +112,71 @@ class Ingredients extends React.Component {
     this.setState({ locationChecked: checked });
   }
 
+  toggleServingsForm() {
+    let newState = !this.state.servingsForm;
+    this.setState({servingsForm: newState});
+  }
+
+  handleRadioChange(e) {
+  this.setState({
+    metricSystem: e.target.value
+  });
+}
+
+  createSuccessMessage() {
+    this.setState({successMessage: true}, () => {
+      setTimeout(() => {this.setState({successMessage: false})}, 2500)
+    })
+  }
+
+  createAddItemMessage() {
+    this.setState({addItemMessage: true}, () => {
+      setTimeout(() => {this.setState({addItemMessage: false})}, 2500)
+    })
+  }
+
+  createAddAllItemsMessage() {
+    this.setState({addAllItemsMessage: true}, () => {
+      setTimeout(() => {this.setState({addAllItemsMessage: false})}, 2500)
+    })
+  }
+
   render() {
+    let totalMins = this.state.recipe[0].cook_time + this.state.recipe[0].prep_time;
+    let totalHours = Math.floor(totalMins / 60);
+    let remainingMins = totalMins % 60;
+
     return (
       <div className="outerContainer">
-      <div className="title">Ingredients
-        <Summary />
-      </div>
-      <div className="container">
-        <div className="nav">
-          <OnSale 
-            currentStoreInfo={this.state.currentStoreInfo} 
-            getStoreInfo={this.getStoreInfo.bind(this)} 
-            toggleLocation={this.toggleLocation.bind(this)} 
-            locationChecked={this.state.locationChecked}
-            scrollToNextStore={this.scrollToNextStore.bind(this)} />
+        <div className="title">Ingredients
+          <Summary servingsFormState={this.state.servingsForm} toggleServingsForm={this.toggleServingsForm.bind(this)} prepHours={totalHours} prepMins={remainingMins} calories={this.state.recipe[0].calories} recipeSize={this.state.recipeSize} />
         </div>
-        <div className="ingredientList">
-          <IngredientsList ingredients={this.state.recipe} locationChecked={this.state.locationChecked} />
+        <div className="container">
+        {this.state.successMessage
+          ? <div className="successMessage">The ingredient list now reflects serving size.</div>
+          : null }
+        {this.state.addItemMessage
+          ? <div className="successMessage">Added to shopping list.</div>
+          : null }
+        {this.state.addAllItemsMessage
+          ? <div className="successMessage">Shopping list saved.</div>
+          : null }          
+          {this.state.servingsForm
+            ? <RecipeSizeForm handleRadioChange={this.handleRadioChange.bind(this)} metricSystem={this.state.metricSystem} recipeSize={this.state.recipeSize} originalRecipeSize={this.state.originalRecipeSize} setNewRecipeSize={this.setNewRecipeSize.bind(this)}/>
+            : null
+          }
+          <div className="nav">
+            <OnSale 
+              currentStoreInfo={this.state.currentStoreInfo} 
+              getStoreInfo={this.getStoreInfo.bind(this)} 
+              toggleLocation={this.toggleLocation.bind(this)} 
+              locationChecked={this.state.locationChecked}
+              scrollToNextStore={this.scrollToNextStore.bind(this)} />
+          </div>
+          <div className="ingredientList">
+            <IngredientsList metricSystem={this.state.metricSystem} ingredients={this.state.recipe} locationChecked={this.state.locationChecked} addItemMessage={this.createAddItemMessage.bind(this)} addAllItemsMessage={this.createAddAllItemsMessage.bind(this)} />
+          </div>
         </div>
-      </div>
       </div>
     );
   }

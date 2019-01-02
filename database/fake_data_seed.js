@@ -43,7 +43,7 @@ var seedDatabase = function(err, cb) {
 
   //INGREDIENT_LEGEND TABLE
   var insertIntoIngredientLegendTable = function(cb) {
-   var sql = "INSERT INTO ingredient_legend (id, metric, name, category) VALUES ?";
+   var sql = "INSERT INTO ingredient_legend (id, name, category) VALUES ?";
     connection.query(sql, [fakeData.ingredient_legend_array], cb);
   }
 
@@ -65,7 +65,7 @@ var seedDatabase = function(err, cb) {
 
   //RECIPES_INGREDIENTS_JOIN TABLE
   var insertIntoRecipesIngredientsTable = function(cb) {
-   var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, ingredient_id) VALUES ?";
+   var sql = "INSERT INTO recipes_ingredients (recipe_id, qty, metric, qty2, metric2, ingredient_id) VALUES ?";
     connection.query(sql, [fakeData.recipes_ingredients_join], cb);
   }
 

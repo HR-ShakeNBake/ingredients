@@ -1,4 +1,6 @@
 var faker = require('faker');
+var math = require('mathjs');
+var convert = require('convert-units');
 
 //UTILITY FUNCTION
 var randomInArray = function(array) {
@@ -41,11 +43,6 @@ for (var i = 1; i < 101; i++) {
 
 //INGREDIENT_LEGEND
 var ingredient_legend_array = [];
-var metricOptions = ['mL', 'mg', null, 'bunch', 'pinch'];
-
-var ingredientMetricCreator = function() {
-  return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];
-}
 
 var ingredientNameCreator = function() {
   return faker.lorem.word();
@@ -68,7 +65,7 @@ var ingredientCategoryCreator = function() {
 }
 
 for (var i = 1; i < 501; i++) {
-  ingredient_legend_array.push([i, ingredientMetricCreator(), ingredientNameCreator(), ingredientCategoryCreator()])
+  ingredient_legend_array.push([i, ingredientNameCreator(), ingredientCategoryCreator()])
 }
 
 //STORE LEGEND
@@ -115,11 +112,11 @@ for (var i = 1; i < 501; i++) {
 var nutrition_legend_array = [];
 
 var nutrition_calorie_creator = function() {
-  return Math.ceil(Math.random() * 200);
+  return Math.ceil(Math.random() * 500);
 }
 
 var nutrition_serving_total_creator = function() {
-  return Math.ceil(Math.random() * 4);
+  return 3 + Math.ceil(Math.random() * 4);
 }
 
 for (var i = 1; i < 101; i++) {
@@ -145,6 +142,12 @@ for (var i = 1; i < 101; i++) {
 //RECIPES-INGREDIENTS JOIN TABLE
 var recipes_ingredients_join = [];
 
+var metricOptions = ['cups', 'ounces', 'tablespoons', 'teaspoons', null, 'bunches', 'pinches'];
+
+var ingredientMetricCreator = function() {
+  return metricOptions[Math.floor(Math.random() * Math.random() * metricOptions.length)];
+}
+
 //100 recipes that have, on average, 10 ingredients
 recipe_legend_array.forEach(item => {
   var ingredientsLength = 5 + Math.floor(Math.random()* 10);
@@ -154,7 +157,34 @@ recipe_legend_array.forEach(item => {
     var randomIngredient = randomIngredientId();
     if (!randomIngredientList.includes(randomIngredient)) {
       var ingredientsQty = Math.ceil(Math.random() * 10);
-      recipes_ingredients_join.push([item[0], ingredientsQty, randomIngredientId() ])
+      var ingredientMetric = ingredientMetricCreator();
+      
+      if (ingredientMetric === 'cups') {
+        var ingredientQty2 = convert(ingredientsQty).from('cup').to('ml');
+        var ingredientMetric2 = 'mL';
+      }
+
+      else if (ingredientMetric === 'ounces') {
+        var ingredientQty2 = convert(ingredientsQty).from('oz').to('g');
+        var ingredientMetric2 = 'g';        
+      }
+
+      else if (ingredientMetric === 'tablespoons') {
+        var ingredientQty2 = convert(ingredientsQty).from('Tbs').to('ml');
+        var ingredientMetric2 = 'mL';
+      }
+
+      else if (ingredientMetric === 'teaspoons') {
+        var ingredientQty2 = convert(ingredientsQty).from('tsp').to('ml');
+        var ingredientMetric2 = 'mL';
+      }
+
+      else {
+        var ingredientQty2 = ingredientsQty;
+        var ingredientMetric2 = ingredientMetric;        
+      }
+
+      recipes_ingredients_join.push([item[0], ingredientsQty, ingredientMetric, ingredientQty2, ingredientMetric2, randomIngredientId() ])
     }
   }
 })
@@ -183,9 +213,9 @@ var products_stores_join = [];
 for (var i = 1; i < 21; i++) {
   //500 products
   for (var j = 1; j < 501; j+=5) {
-    //A store has a 25% chance of carrying a product
+    //A store has a 50% chance of carrying a product
     //Each store will only carry one product for a given ingredient
-    if (Math.random() > 0.25) {
+    if (Math.random() > 0.50) {
       products_stores_join.push([i, j, productDealCreator()])
     }
   }

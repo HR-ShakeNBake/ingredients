@@ -34,7 +34,7 @@ CREATE TABLE store_legend (
 );
 CREATE TABLE ingredient_legend (
   id int NOT NULL AUTO_INCREMENT,
-  metric VARCHAR(20),
+  -- metric VARCHAR(20),
   name VARCHAR(50),
   category VARCHAR(50),
   PRIMARY KEY (id)
@@ -51,6 +51,9 @@ CREATE TABLE product_legend (
 CREATE TABLE recipes_ingredients (
   recipe_id int,
   qty int,
+  metric VARCHAR(20),
+  qty2 int,
+  metric2 VARCHAR(20),
   ingredient_id int,
   FOREIGN KEY (recipe_id) references recipe_legend(id),
   FOREIGN KEY (ingredient_id) references ingredient_legend(id)
