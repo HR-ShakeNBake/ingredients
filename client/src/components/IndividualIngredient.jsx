@@ -23,8 +23,8 @@ class IndividualIngredient extends React.Component {
     {(!this.props.locationChecked || (this.props.locationChecked && !ingredient.ps_product_id )) 
       ?  <div className="ingredientWithoutProduct">
           {this.state.addedToCart 
-            ? <img src="checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
-            : <img src="plus_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+            ? <img src="http://localhost:5000/checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+            : <img src="http://localhost:5000/plus_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
           }
 
           {this.props.metricSystem === 'US' 
@@ -34,8 +34,8 @@ class IndividualIngredient extends React.Component {
         </div>
       : <div className="ingredientWithProduct">
           {this.state.addedToCart 
-            ? <img src="checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
-            : <img src="plus_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+            ? <img src="http://localhost:5000/checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
+            : <img src="http://localhost:5000/plus_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleClass.bind(this)} />
           }
           {this.props.metricSystem === 'US' 
             ? <span onClick = {this.toggleClass.bind(this)} style={{cursor: 'pointer'}} >{ingredient.qty} {ingredient.ingredient_metric} {ingredient.ingredient_name} </span>

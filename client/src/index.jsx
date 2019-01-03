@@ -4,4 +4,4 @@ import $ from 'jquery';
 
 import Ingredients from './components/Ingredients.jsx'
 
-ReactDOM.render(<Ingredients />, document.getElementById('app'));
+ReactDOM.render(<Ingredients />, document.getElementById('ingredients'));

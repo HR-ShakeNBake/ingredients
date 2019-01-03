@@ -69,8 +69,8 @@ class OnSale extends Component {
       </label>
       {this.props.locationChecked
         ? <span>{this.state.gear 
-            ? <img src="on_gear.png" className="gear" style={{height: "38px", width: "38px"}} onClick = {this.toggleGear.bind(this)} />
-            : <img src="off_gear.png" className="gear" style={{height: "38px", width: "38px"}} onClick = {this.toggleGear.bind(this)} />
+            ? <img src="http://localhost:5000/on_gear.png" className="gear" style={{height: "38px", width: "38px"}} onClick = {this.toggleGear.bind(this)} />
+            : <img src="http://localhost:5000/off_gear.png" className="gear" style={{height: "38px", width: "38px"}} onClick = {this.toggleGear.bind(this)} />
           }</span>
         : null
       }
