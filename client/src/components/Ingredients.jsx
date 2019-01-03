@@ -28,7 +28,7 @@ class Ingredients extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/recipes/1')
+    fetch('http://localhost:5000/recipes')
       .then(res => res.json())
       .then(recipe => this.setState({ recipe }))
       .then(() => this.setRecipeSize(this.state.recipe[0].serving_total))

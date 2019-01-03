@@ -23,7 +23,7 @@ class StoreDetails extends React.Component {
       <div className="storeAddress">{store.address} </div>
       <div className="storeCityStateZip">{store.city_state_zip} </div>
       </div>
-      <div className="chevronArrow"><img src="store_arrow.png" className="storeArrow" style={{height: "38px", width: "38px"}} onClick = {this.toggleStore.bind(this)} /></div>
+      <div className="chevronArrow"><img src="http://localhost:5000/store_arrow.png" className="storeArrow" style={{height: "38px", width: "38px"}} onClick = {this.toggleStore.bind(this)} /></div>
       </div>
     : null
     return (
