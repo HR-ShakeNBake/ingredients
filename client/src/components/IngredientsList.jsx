@@ -23,8 +23,8 @@ class IngredientsList extends React.Component {
 	      {recipeItems}
 	      <div className="ingredientWithoutProduct">
 	          {this.state.addedAllToCart 
-	            ? <img src="checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleCart.bind(this)} />
-	            : <img src="last_ingredient_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleCart.bind(this)} />
+	            ? <img src="http://localhost:5000/checkmark.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleCart.bind(this)} />
+	            : <img src="http://localhost:5000/last_ingredient_icon.png" className="plusIcon" style={{cursor: 'pointer', height: "33px", width: "33px"}} onClick = {this.toggleCart.bind(this)} />
 	          }
 		      <span style={{cursor: 'pointer'}} onClick = {this.toggleCart.bind(this)} >Add all ingredients to list</span>
 	        </div>
