@@ -2,12 +2,26 @@
 const mysql = require('mysql');
 const mysqlConfig = require('./config.js');
 const connection = mysql.createConnection(mysqlConfig);
-const fakeData = require('./fake_data_functions.js')
+const fakeData = require('./fake_data_functions.js');
+
+connection.connect(function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+  console.log('Successfully connected to MySQL container');
+}
+});
 
 var seedDatabase = function(err, cb) {
   console.log('creating seed')
   //CLEAR TABLES
-  connection.query('DELETE FROM recipes_ingredients');
+  connection.query('DELETE FROM recipes_ingredients', function (err, result) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('success')
+  }
+});
   connection.query('DELETE FROM ingredients_products');
   connection.query('DELETE FROM products_stores');
   connection.query('DELETE FROM recipe_legend');

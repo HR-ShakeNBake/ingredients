@@ -13,9 +13,15 @@ app.use(cors());
 
 
 //INITIALIZE DATABASE
-var db = require('./../database/index.js')
-const dbSeed = require('./../database/fake_data_seed.js')
-dbSeed.createSeed();
+
+var initializeDBFunctions = function() {
+  var db = require('./../database/index.js');
+  const dbSeed = require('./../database/fake_data_seed.js');
+  setTimeout(dbSeed.createSeed, 30000);
+}
+
+setTimeout(initializeDBFunctions, 30000);
+// dbSeed.createSeed();
 
 
 //MIDDLEWARE

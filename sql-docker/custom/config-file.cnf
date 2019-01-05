@@ -1,8 +1,9 @@
 const connection = {
-  host: 'database',
+  host: 'localhost',
   user: 'root',
   password: 'password',
-  database: 'ingredients_module'
+  database: 'ingredients_module',
+  port: '3306',
 };
 
 module.exports = connection;
