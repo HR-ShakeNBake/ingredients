@@ -1,6 +1,6 @@
 # Shake 'n' Bake
 
-> This project buidls out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location.
+> This project builds out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location.
 
 ## Related Projects
 
