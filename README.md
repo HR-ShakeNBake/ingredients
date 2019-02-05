@@ -1,13 +1,12 @@
-# Project Name
+# Shake 'n' Bake
 
-> Project description
+> This project buidls out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/HR-ShakeNBake/ShakeNBake-SummaryRepo
+  - https://github.com/HR-ShakeNBake/directions-recommendations-service
+  - https://github.com/HR-ShakeNBake/reviews-service
 
 ## Table of Contents
 
