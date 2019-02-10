@@ -1,4 +1,4 @@
-# Shake 'n' Bake
+# Shake 'n' Bake - Ingredients Module
 
 > This project builds out the front-end for a service that renders ingredient information for a given recipe. A user can adjust the recipe size or ingredient measurement system (metric or US) and the recipe is updated dynamically based on user selection. A user can enter their zip code and information on a nearby grocery store will be rendered. For any products that are on sale at that store that can be used in the recipe, product name and price will be rendered underneath the corresponding ingredient. The current iteration for thisp roject uses fake data for 100 recipes, and ~500 ingredients, ~100 stores, and ~500 suggested fake products. 
 
