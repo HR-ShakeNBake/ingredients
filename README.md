@@ -11,7 +11,6 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
 1. [Development](#development)
 
 ## Usage
@@ -30,5 +29,11 @@ From within the root directory:
 
 ```sh
 npm install
+npm run schema
+npm run react-dev
+nodemon server/index.js
+nodemon database/index.js
+page is rendered at localhost:5000
+
 ```
 
