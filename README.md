@@ -1,6 +1,6 @@
 # Shake 'n' Bake
 
-> This project builds out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location. This current iteration uses fake data for 100 recipes, and ~500 ingredients, stores, and suggested products.
+> This project builds out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location. This current iteration uses fake data for 100 recipes, and ~500 ingredients, ~100 stores, and ~500 suggested fake products. 
 
 ## Related Projects
 
