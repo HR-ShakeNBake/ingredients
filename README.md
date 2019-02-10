@@ -1,6 +1,6 @@
 # Shake 'n' Bake
 
-> This project builds out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location.
+> This project builds out the front-end for a service that identifies delicious recipes, and suggests where to buy their ingredients based on your location. This current iteration uses fake data for 100 recipes, and ~500 ingredients, stores, and suggested products.
 
 ## Related Projects
 
@@ -32,7 +32,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
